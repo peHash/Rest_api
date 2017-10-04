@@ -238,6 +238,24 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(express.static(path.join(__dirname, 'public/HTML')));
 app.use(bodyParser({defer: true}));
+app.use(function (req, res, next) {
+
+    // Website you wish to allow to connect
+    res.setHeader('Access-Control-Allow-Origin', 'http://onita.ir');
+
+    // Request methods you wish to allow
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+
+    // Request headers you wish to allow
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+
+    // Set to true if you need the website to include cookies in the requests sent
+    // to the API (e.g. in case you use sessions)
+    res.setHeader('Access-Control-Allow-Credentials', true);
+
+    // Pass to next layer of middleware
+    next();
+});
 
 function ensureAuthenticated(req, res, next) {
   if (req.headers.authorization) {
@@ -581,85 +599,7 @@ app.put('/api/article', ensureAuthenticated, function(req,res,next){
 
 
 app.post('/api/jobs', ensureAuthenticated , function (req, res, next) {
-/*  var seriesName = req.body.showName
-    .toLowerCase()
-    .replace(/ /g, '_')
-    .replace(/[^\w-]+/g, '');
-  var apiKey = '9EF1D1E7D28FDA0B';
-  var parser = xml2js.Parser({
-    explicitArray: false,
-    normalizeTags: true
-  });
 
-  async.waterfall([
-    function (callback) {
-      request.get('http://thetvdb.com/api/GetSeries.php?seriesname=' + seriesName, function (error, response, body) {
-        if (error) return next(error);
-        parser.parseString(body, function (err, result) {
-          if (!result.data.series) {
-            return res.send(400, { message: req.body.showName + ' was not found.' });
-          }
-          var seriesId = result.data.series.seriesid || result.data.series[0].seriesid;
-          callback(err, seriesId);
-        });
-      });
-    },
-    function (seriesId, callback) {
-      request.get('http://thetvdb.com/api/' + apiKey + '/series/' + seriesId + '/all/en.xml', function (error, response, body) {
-        if (error) return next(error);
-        parser.parseString(body, function (err, result) {
-          var series = result.data.series;
-          var episodes = result.data.episode;
-          var show = new Show({
-            _id: series.id,
-            name: series.seriesname,
-            airsDayOfWeek: series.airs_dayofweek,
-            airsTime: series.airs_time,
-            firstAired: series.firstaired,
-            genre: series.genre.split('|').filter(Boolean),
-            network: series.network,
-            overview: series.overview,
-            rating: series.rating,
-            ratingCount: series.ratingcount,
-            runtime: series.runtime,
-            status: series.status,
-            poster: series.poster,
-            episodes: []
-          });
-          _.each(episodes, function (episode) {
-            show.episodes.push({
-              season: episode.seasonnumber,
-              episodeNumber: episode.episodenumber,
-              episodeName: episode.episodename,
-              firstAired: episode.firstaired,
-              overview: episode.overview
-            });
-          });
-          callback(err, show);
-        });
-      });
-    },
-    function (show, callback) {
-      var url = 'http://thetvdb.com/banners/' + show.poster;
-      request({ url: url, encoding: null }, function (error, response, body) {
-        show.poster = 'data:' + response.headers['content-type'] + ';base64,' + body.toString('base64');
-        callback(error, show);
-      });
-    }
-  ], function (err, show) {
-    if (err) return next(err);
-    show.save(function (err) {
-      if (err) {
-        if (err.code == 11000) {
-          return res.send(409, { message: show.name + ' already exists.' });
-        }
-        return next(err);
-      }
-      var alertDate = Date.create('Next ' + show.airsDayOfWeek + ' at ' + show.airsTime).rewind({ hour: 2});
-      agenda.schedule(alertDate, 'send email alert', show.name).repeatEvery('1 week');
-      res.send(200);
-    });
-  });*/
   var job = new Job({
     category: req.body.category.value,
     title: req.body.title,
