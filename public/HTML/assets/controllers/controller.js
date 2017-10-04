@@ -1,10 +1,4 @@
-app.controller('MyController', function ($scope,Modernizr,$window, $timeout, $http, $document,$uibModal, Upload, Auth, $location,Analytics) {
-
-Analytics.registerScriptTags();
-Analytics.registerTrackers();
-Analytics.set('&uid', 1234);
-Analytics.trackPage('/landing/justlanding111');
-Analytics.pageView();
+app.controller('MyController', function ($scope,Modernizr,$window, $timeout, $http, $document,$uibModal, Upload, Auth, $location, Analytics) {
 
 $(window).load(function(){
      someUIWorking($scope, Modernizr);
@@ -136,6 +130,7 @@ function expertsListController($scope, $http) {
 }
 
 function newProjectController($scope, Upload, $http, toaster, $uibModalInstance){
+  Analytics.trackPage('/new-project');
 
   var succ = {
     header: 'ثبت شد',
@@ -216,6 +211,7 @@ function newProjectController($scope, Upload, $http, toaster, $uibModalInstance)
 }
 
 function contactUsController($scope, toaster, $http, $uibModalInstance) {
+Analytics.trackPage('/contact-us', 'Expert Acquisition');
 
   var succ = {
     header: 'ثبت شد',

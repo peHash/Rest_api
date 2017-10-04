@@ -27,6 +27,7 @@ var youtubeFolder = path.join(__dirname, 'public/youtube/videos');
 
 
 var userSchema = new Schema({
+
   // _creator: {type: Number, ref: 'Course'},
   name: { type: String, trim: true, required: true },
   tel : {type: Number, unique: true, default: ''},
@@ -95,6 +96,7 @@ userSchema.methods.comparePassword = function(candidatePassword, cb) {
 };
 
 var jobSchema = new Schema({
+  
     id: ObjectId,
     user: {type: mongoose.Schema.Types.ObjectId, 
       ref: 'User', default: null}, 

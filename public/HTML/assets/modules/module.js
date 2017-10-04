@@ -29,14 +29,8 @@ angular
   .config(['AnalyticsProvider', function (AnalyticsProvider) {
    // Add configuration code as desired
    AnalyticsProvider.setAccount('UA-101661642-1');
-
-   AnalyticsProvider
-    .logAllCalls(true)
-    .startOffline(true)
-    .useECommerce(true, true);
-
    AnalyticsProvider.trackUrlParams(true);
-}]).run(['Analytics', function(Analytics) { }]);
+}]).run(['Analytics', function(Analytics) {}]);
 
 
 angular
