@@ -24,6 +24,11 @@ var Schema = mongoose.Schema,
     ObjectId = Schema.ObjectId;
 var youtubeFolder = path.join(__dirname, 'public/youtube/videos');
 
+let Promise = require('bluebird');
+const TelegramBot = require('node-telegram-bot-api');
+const token = '430103329:AAFeFKj6WaqRpyh9CyX4ZSMtOiTEaN6UOAM';
+const bot = new TelegramBot(token, {polling: true});
+
 
 
 var userSchema = new Schema({
@@ -380,13 +385,14 @@ app.post('/api/orders', function(req,res,next){
 })
 
 app.get('/read',  function(req,res){
-  console.log('got it');
-  var srcPath = path.join(__dirname, 'script.js');
-  fs.readFile(srcPath, 'utf8', function (err, data) {
-          if (err) throw err;
-          res.send(data);
-          }
-      );
+  // console.log('got it');
+  // var srcPath = path.join(__dirname, 'script.js');
+  // fs.readFile(srcPath, 'utf8', function (err, data) {
+  //         if (err) throw err;
+  //         res.send(data);
+  //         }
+  //     );
+  bot.sendMessage('34106450', 'سلام جیییییییگرم !')
 })
 
 app.post('/api/youtubeDownloader', function(req, res, next){
