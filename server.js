@@ -314,7 +314,7 @@ if (req.body.url) {
 }
 
 download.image(options)
-  .then(({ filename, image }) => {
+  .then(function(filename) {
     res.send({url: filename, status: 200});
   })
   .catch((err) => console.error(err))
