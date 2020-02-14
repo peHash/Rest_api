@@ -2,7 +2,7 @@
   angular.module('MyApp')
   .controller('LoginCtrl', function($scope, Auth) {
     $scope.login = function() {
-      Auth.login({ email: $scope.email, password: $scope.password });
+      Auth.login({ tel: $scope.tel, password: $scope.password });
     };
     $scope.facebookLogin = function() {
       Auth.facebookLogin();

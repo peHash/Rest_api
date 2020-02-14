@@ -3,11 +3,9 @@ angular.module('MyApp')
   .controller('SignupCtrl', function($scope, Auth) {
     $scope.signup = function() {
       Auth.signup({
-        firstName: $scope.firstName,
-        lastName: $scope.lastName,
-        cellPhoneNumber: $scope.cellPhoneNumber,
-        email: $scope.email,
-        password: $scope.password
+        tel: $scope.cellPhoneNumber,
+        password: $scope.password, 
+        freelancer: $scope.freelancer
       });
     };
     $scope.pageClass = 'fadeZoom'

@@ -1,26 +1,274 @@
 <style> 
+  .login > ul > li > a {
+    color: #fff;
+  }
+  header ._navbar_holder ._navbar ._right_side ._main_menu_holder ._main_menu > li ._main_submenu_holder
+  {
+    position: absolute;
+    border-top: 1px solid 
+#d7d7d7;
+box-shadow: 0 4px 11px 0
+rgba(48,48,48,.11);
+z-index: 1000;
+top: 100%;
+right: -100px;
+left: -100px;
+height: 333px;
+background:
+    #fff;
+    border-radius: 0 0 20px 20px;
+    overflow: hidden;
+    display: none;
+}
+._main_submenu_holder .container {
+    position: relative;
+}
+._main_menu {
+  float: right;
+display: -webkit-box;
+display: flex;
+-webkit-box-align: center;
+align-items: center;
+-webkit-box-pack: start;
+justify-content: flex-start;
+}
+._main_menu > li {
+  position: unset;
+}
+._main_menu > li > a {
+  position: relative;
+color:
+#fff;
+padding: 34px 14px;
+font-family: Vazir-medium;
+font-size: 16px;
+display: block;
+}
+._main_menu > li > a ._icon {
+  color:
+#5471e9;
+vertical-align: middle;
+display: inline-block;
+font-size: 16px;
+}
+._main_menu > li ._main_submenu_holder {
+  position: absolute;
+border-top: 1px solid
+#d7d7d7;
+box-shadow: 0 4px 11px 0
+rgba(48,48,48,.11);
+z-index: 1000;
+top: 90px;
+right: -270px;
+height: 333px;
+background:
+#fff;
+border-radius: 0 0 20px 20px;
+overflow: hidden;
+display: none;
+}
+._main_menu > li ._main_submenu {
+  float: right;
+width: 195px;
+height: 333px;
+padding: 60px 0;
+text-align: right;
+-border-left: solid 1px #e4e4e4;
+list-style: none;
+}
+._main_menu > li ._main_submenu li {
+  padding: 11px 32px 10px 0;
+margin: 0;
+border-radius: 0 33px 33px 0;
+-webkit-transition: all .3s ease;
+transition: all .3s ease;
+}
+._main_menu > li ._main_submenu li._active > a {
+  color: #333;
+}
+._main_menu > li ._main_submenu li a {
+  position: relative;
+display: block;
+font-size: 13px;
+color: #9b9b9b;
+margin: 0;
+padding: 0;
+}
+._main_menu > li ._main_submenu li ._submenu {
+  display: none;
+position: absolute;
+border: none;
+height: 333px;
+right: 200px;
+left: 0;
+top: 0;
+background:
+#fff;
+padding: 32px 12px 32px 20px;
+overflow: hidden;
+}
+.owl-carousel.owl-loaded {
+  display: block;
+}
+.owl-carousel {
+    width: 100%;
+    z-index: 1;
+    position: relative;
+} 
+.owl-carousel .owl-stage-outer {
+    position: relative;
+    overflow: hidden;
+    -webkit-transform: translate3d(0,0,0);
+}
+.owl-carousel .owl-stage {
+    position: relative;
+    -ms-touch-action: pan-Y;
+    touch-action: manipulation;
+    -moz-backface-visibility: hidden;
+}
+._main_menu > li ._main_submenu li ._submenu .owl-item {
+  transition: all .3s ease;
+}
+.owl-carousel.owl-rtl .owl-item {
+    float: right;
+}
+.owl-carousel.owl-drag .owl-item {
+    -ms-touch-action: pan-y;
+    touch-action: pan-y;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.owl-carousel .owl-item {
+    min-height: 1px;
+    float: left;
+    -webkit-backface-visibility: hidden;
+    -webkit-touch-callout: none;
+}
+.owl-carousel .owl-item, .owl-carousel .owl-wrapper {
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -ms-backface-visibility: hidden;
+    -webkit-transform: translate3d(0,0,0);
+    -moz-transform: translate3d(0,0,0);
+    -ms-transform: translate3d(0,0,0);
+}
+._main_menu > li ._main_submenu li ._submenu .item {
+  width: 122px;
+margin: 0 auto;
+}
+._main_menu > li ._main_submenu li ._submenu .item a {
+  display: block;
+width: 100%;
+text-align: center;
+padding: 0;
+margin: 32px auto 0;
+    margin-top: 32px;
+color:
+#303030;
+}
+._main_menu > li ._main_submenu li a {
+  position: relative;
+display: block;
+font-size: 13px;
+color: #9b9b9b;
+margin: 0;
+padding: 0;
+}
+._main_menu > li ._main_submenu li ._submenu .item a {
+  text-align: center;
+color:
+#303030;
+}
+._main_menu > li ._main_submenu li a {
+  font-size: 13px;
+}
+._main_menu > li ._main_submenu li a {
+  position: relative;
+display: block;
+font-size: 13px;
+color:
+#9b9b9b;
+margin: 0;
+padding: 0;
+}
+._main_menu > li ._main_submenu li ._submenu .item a ._img_link .img_box {
+  width: 122px;
+height: 40px;
+padding: 5px;
+border: 1px solid
+#dadada;
+border-radius: 13px;
+text-align: center;
+}
+._main_menu > li ._main_submenu li ._submenu .item a ._img_link .img_box img {
+  display: inline-block;
+width: auto;
+max-height: 100%;
+}
+._main_menu > li ._main_submenu li ._submenu .item a ._img_link span {
+  display: block;
+font-size: 12px;
+padding-top: 8px;
+}
+body ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+._main_menu > li ._main_submenu li {
+  padding: 11px 32px 10px 0;
+margin: 0;
+border-radius: 0 33px 33px 0;
+-webkit-transition: all .3s ease;
+transition: all .3s ease;
+padding: 20px;
+color:
+#666;
+font-size: 13px;
+font-weight: 400;
+}
+._main_menu > li ._main_submenu li:hover {
+cursor: pointer;
+  }
+._main_menu > li ._main_submenu li._active {
+  background:
+#fff;
+-webkit-transition: all .3s ease;
+transition: all .3s ease;
+}
+._main_menu > li ._main_submenu {
+  text-align: right;
+}
+
+._main_menu > li ._main_submenu li._active > a {
+  
+}
+
+
+
 </style>
 
- <div ng-controller="navbarCtrl" class="navbar navbar-default navbar-static-top" role="navigation">
-    <div class="col-md-3 col-sm-3 hidden-xs header" style="float: left !important;">
+ <div ng-controller="navbarCtrl" class="navbar navbar-static-top" role="navigation">
+    <div class="col-md-3 hidden-sm hidden-xs header" style="float: left !important;">
       <div class="navbar__header">
         <!-- <a class="navbar__brand" href="/">
           <h1 class="brand__header logo__gray">gigakar</h1>
         </a> -->
-        <a ng-show="leftNavBtn=='article'" class="button-secondary white" style="position:absolute;left:55px;top:20%;" href="/post-article">ارسال مقاله
-        </a>
-        <a ng-show="leftNavBtn=='non-article'" class="button-secondary white" style="position:absolute;left:55px;top:20%;" href="/add">ارسال پروژه
+        
+        <a class="button-secondary white" style="position:absolute;left:55px;top:20%;" href="/signup" ng-if="!currentUser">+ ثبت پروفایل 
         <span style="font-size:70%">
               	(رایگان)
               </span>
         </a>
       </div>
     </div>
-    <div class="col-md-9 col-sm-9 col-xs-12 header login">
-      <ul class="nav navbar-nav pull-right login-ul col-md-4 col-sm-5 col-xs-12" ng-if="!currentUser">
-        <div class="giga-logo-container">
+    <div class="col-md-9 col-sm-12 col-xs-12 header login">
+      <ul class="nav navbar-nav pull-right login-ul " ng-if="!currentUser">
+        <!-- <div class="giga-logo-container">
           <a  href="/"><img id="giga-logo-portion" src="./images/giga-logo.png"/></a>
-        </div>
+        </div> -->
         <li data-match-route="/login">
           <a href="/login">
             <span class="ion-android-exit"></span>
@@ -44,13 +292,29 @@
             <li class="">
               <a class="dropdown-toggle dropDownItem isCurrent" ng-href="/my/{{currentUser._id}}" ng-click="usertoggle()">
                 <i class="ion-person"></i>
-                {{currentUser.email}}
+                0{{currentUser.tel}}
               </a>
             </li>
           </ul>
+          <a ng-show="!user.tel_verified" class="dropDownItem listFooter"  ng-click="openModal('verification')">
+            <i class="ion-gear-a"></i>
+            تایید شماره موبایل 
+          </a>
           <a class="dropDownItem listFooter" ng-href="/my/{{currentUser._id}}" ng-click="usertoggle()">
             <i class="ion-gear-a"></i>
             پروفایل
+          </a>
+          <a class="dropDownItem listFooter" ng-href="/" ng-click="usertoggle()">
+            <i class="ion-gear-a"></i>
+              لیست مترجمین 
+          </a>
+          <a class="dropDownItem listFooter" ng-click="openModal('payment');">
+            <i class="ion-gear-a"></i>
+            افزایش موجودی {{user.cash}} تومان
+          </a>
+          <a class="dropDownItem listFooter" ng-click="payment()" ng-show="user.freelancer">
+            <i class="ion-gear-a"></i>
+             تسویه حساب
           </a>
           <a class="dropDownItem" ng-click="logout();">
             <i class="ion-power"></i>
@@ -74,7 +338,890 @@
           </a>
         </li> -->
       </ul>
-      <ul class="col-md-8 col-sm-7 hidden-xs nav navbar-nav primary-pages pull-right">
+      <ul class="nav navbar-nav pull-right col-md-8" ng-show="!mobile">
+        <ul class="_main_menu">
+    <li class="has_submenu">
+        <a href="/top30/" >۳۰ مترجم تاپ</a>
+        <!-- <div class="_main_submenu_holder" style="opacity: 1;display: block;" ng-show="dropdown2" ng-style="getStyle()">
+            <div class="container">
+                <ul class="_main_submenu _levelOne">
+                    <li ng-class="{_active: category == 'special'}">
+                        <a id="GTM-top-nav-cat-digital" ng-click="setcat('special')">
+                                                                ترجمه تخصصی
+                                                            </a>
+                        <div class="_submenu _levelTwo" style="display: block; opacity: 1;" ng-show="category== 'special'">
+                            <div class="owl-carousel _d_menu_slider owl-rtl owl-loaded owl-drag owl-hidden">
+
+                                <div class="owl-stage-outer">
+                                    <div class="owl-stage" style="transform: translate3d(0px, 0px, 0px); transition: all 0s ease 0s; width: 4790px;">
+                                        <div class="owl-item active" style="width: 136.857px;">
+                                            <div class="item">
+                                                <a href="https://iranrenter.com/product/digikala" class="item">
+                                                    <div class="_img_link">
+                                                        <div class="img_box">
+                                                            <img src="https://iranrenter.com/static/products/IRP4823/5d25829f00a06_digikala-2-1562739343.jpg" alt="">
+                                                        </div>
+                                                        <span>دیجی کالا</span>
+                                                    </div>
+                                                </a>
+                                                <a href="https://iranrenter.com/product/gsmpro" class="item">
+                                                    <div class="_img_link">
+                                                        <div class="img_box">
+                                                            <img src="https://iranrenter.com/static/products/IRP5113/5e09c2c063a93_gsmpro-1577697873.jpg" alt="">
+                                                        </div>
+                                                        <span>جی اس ام پرو</span>
+                                                    </div>
+                                                </a>
+                                                <a href="https://iranrenter.com/product/barsashop" class="item">
+                                                    <div class="_img_link">
+                                                        <div class="img_box">
+                                                            <img src="https://iranrenter.com/static/products/IRP5082/5df9ef117a686_barsashop-1576660638.jpg" alt="">
+                                                        </div>
+                                                        <span>بارثاشاپ</span>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="owl-item active" style="width: 136.857px;">
+                                            <div class="item">
+                                                <a href="https://iranrenter.com/product/tehranspeaker" class="item">
+                                                    <div class="_img_link">
+                                                        <div class="img_box">
+                                                            <img src="https://iranrenter.com/static/products/IRP4919/5d4014ce59a42_tehranspeaker-1564480613.jpg" alt="">
+                                                        </div>
+                                                        <span>تهران اسپیکر</span>
+                                                    </div>
+                                                </a>
+                                                <a href="https://iranrenter.com/product/pixelkala" class="item">
+                                                    <div class="_img_link">
+                                                        <div class="img_box">
+                                                            <img src="https://iranrenter.com/static/products/IRP5073/5df4aee399f71_pixelkala-1576316498.jpg" alt="">
+                                                        </div>
+                                                        <span>پیکسل کالا</span>
+                                                    </div>
+                                                </a>
+                                                <a href="https://iranrenter.com/product/digikomak" class="item">
+                                                    <div class="_img_link">
+                                                        <div class="img_box">
+                                                            <img src="https://iranrenter.com/static/products/IRP5068/5df0deba6d05e_digikomak-1576066251.jpg" alt="">
+                                                        </div>
+                                                        <span>دیجی کمک</span>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="owl-item active" style="width: 136.857px;">
+                                            <div class="item">
+                                                <a href="https://iranrenter.com/product/mtplus" class="item">
+                                                    <div class="_img_link">
+                                                        <div class="img_box">
+                                                            <img src="https://iranrenter.com/static/products/IRP5065/5df0ce41e6268_mtplus-1576062410.jpg" alt="">
+                                                        </div>
+                                                        <span>مایکروتل پلاس</span>
+                                                    </div>
+                                                </a>
+                                                <a href="https://iranrenter.com/product/alireza-shop" class="item">
+                                                    <div class="_img_link">
+                                                        <div class="img_box">
+                                                            <img src="https://iranrenter.com/static/products/IRP5117/5e0b0933d3cf9_alireza-shop-1577781379.jpg" alt="">
+                                                        </div>
+                                                        <span>فروشگاه علیرضا</span>
+                                                    </div>
+                                                </a>
+                                                <a href="https://iranrenter.com/product/hitkala" class="item">
+                                                    <div class="_img_link">
+                                                        <div class="img_box">
+                                                            <img src="https://iranrenter.com/static/products/IRP4890/5d25a2967f3f6_hitkala-1562747472.jpg" alt="">
+                                                        </div>
+                                                        <span>هیت کالا</span>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="owl-item active" style="width: 136.857px;">
+                                            <div class="item">
+                                                <a href="https://iranrenter.com/product/fmava" class="item">
+                                                    <div class="_img_link">
+                                                        <div class="img_box">
+                                                            <img src="https://iranrenter.com/static/products/IRP5183/5e36b4542a018_fmava-1580643212.jpg" alt="">
+                                                        </div>
+                                                        <span>اوا</span>
+                                                    </div>
+                                                </a>
+                                                <a href="https://iranrenter.com/product/malltina" class="item">
+                                                    <div class="_img_link">
+                                                        <div class="img_box">
+                                                            <img src="https://iranrenter.com/static/products/IRP5178/5e3582d5cfd75_malltina-1580565028.jpg" alt="">
+                                                        </div>
+                                                        <span>مالتینا</span>
+                                                    </div>
+                                                </a>
+                                                <a href="https://iranrenter.com/product/mobileabi" class="item">
+                                                    <div class="_img_link">
+                                                        <div class="img_box">
+                                                            <img src="https://iranrenter.com/static/products/IRP5176/5e300ea479a87_mobileabi-1580204462.jpg" alt="">
+                                                        </div>
+                                                        <span>موبایل آبی</span>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="owl-item active" style="width: 136.857px;">
+                                            <div class="item">
+                                                <a href="https://iranrenter.com/product/digicenter" class="item">
+                                                    <div class="_img_link">
+                                                        <div class="img_box">
+                                                            <img src="https://iranrenter.com/static/products/IRP5175/5e2fff5918e99_digicenter-1580203686.jpg" alt="">
+                                                        </div>
+                                                        <span>دیجی سنتر</span>
+                                                    </div>
+                                                </a>
+                                                <a href="https://iranrenter.com/product/alts-coin" class="item">
+                                                    <div class="_img_link">
+                                                        <div class="img_box">
+                                                            <img src="https://iranrenter.com/static/products/IRP5125/5e147f5551627_alts-coin-1578401165.jpg" alt="">
+                                                        </div>
+                                                        <span>آلتس کوین</span>
+                                                    </div>
+                                                </a>
+                                                <a href="https://iranrenter.com/product/samancom" class="item">
+                                                    <div class="_img_link">
+                                                        <div class="img_box">
+                                                            <img src="https://iranrenter.com/static/products/IRP4976/5d93207e43eab_samancom-1569922954.jpg" alt="">
+                                                        </div>
+                                                        <span>سامان کام</span>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="owl-item active" style="width: 136.857px;">
+                                            <div class="item">
+                                                <a href="https://iranrenter.com/product/toofunclub" class="item">
+                                                    <div class="_img_link">
+                                                        <div class="img_box">
+                                                            <img src="https://iranrenter.com/static/products/IRP4943/5d6b992b8fccd_toofunclub-1567332638.jpg" alt="">
+                                                        </div>
+                                                        <span>مرکز بازی توفان</span>
+                                                    </div>
+                                                </a>
+                                                <a href="https://iranrenter.com/product/easymarket" class="item">
+                                                    <div class="_img_link">
+                                                        <div class="img_box">
+                                                            <img src="https://iranrenter.com/static/products/IRP5036/5dde6bd82c363_easymarket-1574857545.jpg" alt="">
+                                                        </div>
+                                                        <span>ایزی مارکت</span>
+                                                    </div>
+                                                </a>
+                                                <a href="https://iranrenter.com/product/shanikala" class="item">
+                                                    <div class="_img_link">
+                                                        <div class="img_box">
+                                                            <img src="https://iranrenter.com/static/products/IRP4949/5d6a619450e8e_shanikala-1567252825.jpg" alt="">
+                                                        </div>
+                                                        <span>شانی کالا</span>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="owl-item active" style="width: 136.857px;">
+                                            <div class="item">
+                                                <a href="https://iranrenter.com/product/sazgarhamrah" class="item">
+                                                    <div class="_img_link">
+                                                        <div class="img_box">
+                                                            <img src="https://iranrenter.com/static/products/IRP4908/5d32caa840af2_sazgarhamrah-1563609681.jpg" alt="">
+                                                        </div>
+                                                        <span>سازگار همراه</span>
+                                                    </div>
+                                                </a>
+                                                <a href="https://iranrenter.com/product/a-mobile" class="item">
+                                                    <div class="_img_link">
+                                                        <div class="img_box">
+                                                            <img src="https://iranrenter.com/static/products/IRP5084/5dfa120774de9_a-mobile-1576669592.jpg" alt="">
+                                                        </div>
+                                                        <span>اهواز موبایل</span>
+                                                    </div>
+                                                </a>
+                                                <a href="https://iranrenter.com/product/sedastore" class="item">
+                                                    <div class="_img_link">
+                                                        <div class="img_box">
+                                                            <img src="https://iranrenter.com/static/products/IRP5107/5e0760a4af73c_sedastore-1577539224.jpg" alt="">
+                                                        </div>
+                                                        <span>صدا استور</span>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="owl-nav">
+                                    <button type="button" role="presentation" class="owl-prev disabled"><span aria-label="Previous">‹</span></button>
+                                    <button type="button" role="presentation" class="owl-next"><span aria-label="Next">›</span></button>
+                                </div>
+                                <div class="owl-dots disabled"></div>
+                            </div>
+                        </div>
+
+                    </li>
+                    <li ng-class="{_active: category == 'article'}">
+                        <a id="GTM-top-nav-cat-digital"  ng-click="setcat('article')">
+                                                                ترجمه مقاله
+                                                            </a>
+                        <div class="_submenu _levelTwo" style="display: block; opacity: 1;" ng-show="category == 'article'">
+                            <div class="owl-carousel _d_menu_slider owl-rtl owl-loaded owl-drag owl-hidden">
+
+                                <div class="owl-stage-outer">
+                                    <div class="owl-stage" style="transform: translate3d(0px, 0px, 0px); transition: all 0s ease 0s; width: 4790px;">
+                                        <div class="owl-item active" style="width: 136.857px;">
+                                            <div class="item">
+                                                <a href="https://iranrenter.com/product/digikala" class="item">
+                                                    <div class="_img_link">
+                                                        <div class="img_box">
+                                                            <img src="https://iranrenter.com/static/products/IRP4823/5d25829f00a06_digikala-2-1562739343.jpg" alt="">
+                                                        </div>
+                                                        <span>دیجی کالا1</span>
+                                                    </div>
+                                                </a>
+                                                <a href="https://iranrenter.com/product/gsmpro" class="item">
+                                                    <div class="_img_link">
+                                                        <div class="img_box">
+                                                            <img src="https://iranrenter.com/static/products/IRP5113/5e09c2c063a93_gsmpro-1577697873.jpg" alt="">
+                                                        </div>
+                                                        <span>جی اس ام پرو</span>
+                                                    </div>
+                                                </a>
+                                                <a href="https://iranrenter.com/product/barsashop" class="item">
+                                                    <div class="_img_link">
+                                                        <div class="img_box">
+                                                            <img src="https://iranrenter.com/static/products/IRP5082/5df9ef117a686_barsashop-1576660638.jpg" alt="">
+                                                        </div>
+                                                        <span>بارثاشاپ</span>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="owl-item active" style="width: 136.857px;">
+                                            <div class="item">
+                                                <a href="https://iranrenter.com/product/tehranspeaker" class="item">
+                                                    <div class="_img_link">
+                                                        <div class="img_box">
+                                                            <img src="https://iranrenter.com/static/products/IRP4919/5d4014ce59a42_tehranspeaker-1564480613.jpg" alt="">
+                                                        </div>
+                                                        <span>تهران اسپیکر</span>
+                                                    </div>
+                                                </a>
+                                                <a href="https://iranrenter.com/product/pixelkala" class="item">
+                                                    <div class="_img_link">
+                                                        <div class="img_box">
+                                                            <img src="https://iranrenter.com/static/products/IRP5073/5df4aee399f71_pixelkala-1576316498.jpg" alt="">
+                                                        </div>
+                                                        <span>پیکسل کالا</span>
+                                                    </div>
+                                                </a>
+                                                <a href="https://iranrenter.com/product/digikomak" class="item">
+                                                    <div class="_img_link">
+                                                        <div class="img_box">
+                                                            <img src="https://iranrenter.com/static/products/IRP5068/5df0deba6d05e_digikomak-1576066251.jpg" alt="">
+                                                        </div>
+                                                        <span>دیجی کمک</span>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="owl-item active" style="width: 136.857px;">
+                                            <div class="item">
+                                                <a href="https://iranrenter.com/product/mtplus" class="item">
+                                                    <div class="_img_link">
+                                                        <div class="img_box">
+                                                            <img src="https://iranrenter.com/static/products/IRP5065/5df0ce41e6268_mtplus-1576062410.jpg" alt="">
+                                                        </div>
+                                                        <span>مایکروتل پلاس</span>
+                                                    </div>
+                                                </a>
+                                                <a href="https://iranrenter.com/product/alireza-shop" class="item">
+                                                    <div class="_img_link">
+                                                        <div class="img_box">
+                                                            <img src="https://iranrenter.com/static/products/IRP5117/5e0b0933d3cf9_alireza-shop-1577781379.jpg" alt="">
+                                                        </div>
+                                                        <span>فروشگاه علیرضا</span>
+                                                    </div>
+                                                </a>
+                                                <a href="https://iranrenter.com/product/hitkala" class="item">
+                                                    <div class="_img_link">
+                                                        <div class="img_box">
+                                                            <img src="https://iranrenter.com/static/products/IRP4890/5d25a2967f3f6_hitkala-1562747472.jpg" alt="">
+                                                        </div>
+                                                        <span>هیت کالا</span>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="owl-item active" style="width: 136.857px;">
+                                            <div class="item">
+                                                <a href="https://iranrenter.com/product/fmava" class="item">
+                                                    <div class="_img_link">
+                                                        <div class="img_box">
+                                                            <img src="https://iranrenter.com/static/products/IRP5183/5e36b4542a018_fmava-1580643212.jpg" alt="">
+                                                        </div>
+                                                        <span>اوا</span>
+                                                    </div>
+                                                </a>
+                                                <a href="https://iranrenter.com/product/malltina" class="item">
+                                                    <div class="_img_link">
+                                                        <div class="img_box">
+                                                            <img src="https://iranrenter.com/static/products/IRP5178/5e3582d5cfd75_malltina-1580565028.jpg" alt="">
+                                                        </div>
+                                                        <span>مالتینا</span>
+                                                    </div>
+                                                </a>
+                                                <a href="https://iranrenter.com/product/mobileabi" class="item">
+                                                    <div class="_img_link">
+                                                        <div class="img_box">
+                                                            <img src="https://iranrenter.com/static/products/IRP5176/5e300ea479a87_mobileabi-1580204462.jpg" alt="">
+                                                        </div>
+                                                        <span>موبایل آبی</span>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="owl-item active" style="width: 136.857px;">
+                                            <div class="item">
+                                                <a href="https://iranrenter.com/product/digicenter" class="item">
+                                                    <div class="_img_link">
+                                                        <div class="img_box">
+                                                            <img src="https://iranrenter.com/static/products/IRP5175/5e2fff5918e99_digicenter-1580203686.jpg" alt="">
+                                                        </div>
+                                                        <span>دیجی سنتر</span>
+                                                    </div>
+                                                </a>
+                                                <a href="https://iranrenter.com/product/alts-coin" class="item">
+                                                    <div class="_img_link">
+                                                        <div class="img_box">
+                                                            <img src="https://iranrenter.com/static/products/IRP5125/5e147f5551627_alts-coin-1578401165.jpg" alt="">
+                                                        </div>
+                                                        <span>آلتس کوین</span>
+                                                    </div>
+                                                </a>
+                                                <a href="https://iranrenter.com/product/samancom" class="item">
+                                                    <div class="_img_link">
+                                                        <div class="img_box">
+                                                            <img src="https://iranrenter.com/static/products/IRP4976/5d93207e43eab_samancom-1569922954.jpg" alt="">
+                                                        </div>
+                                                        <span>سامان کام</span>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="owl-item active" style="width: 136.857px;">
+                                            <div class="item">
+                                                <a href="https://iranrenter.com/product/toofunclub" class="item">
+                                                    <div class="_img_link">
+                                                        <div class="img_box">
+                                                            <img src="https://iranrenter.com/static/products/IRP4943/5d6b992b8fccd_toofunclub-1567332638.jpg" alt="">
+                                                        </div>
+                                                        <span>مرکز بازی توفان</span>
+                                                    </div>
+                                                </a>
+                                                <a href="https://iranrenter.com/product/easymarket" class="item">
+                                                    <div class="_img_link">
+                                                        <div class="img_box">
+                                                            <img src="https://iranrenter.com/static/products/IRP5036/5dde6bd82c363_easymarket-1574857545.jpg" alt="">
+                                                        </div>
+                                                        <span>ایزی مارکت</span>
+                                                    </div>
+                                                </a>
+                                                <a href="https://iranrenter.com/product/shanikala" class="item">
+                                                    <div class="_img_link">
+                                                        <div class="img_box">
+                                                            <img src="https://iranrenter.com/static/products/IRP4949/5d6a619450e8e_shanikala-1567252825.jpg" alt="">
+                                                        </div>
+                                                        <span>شانی کالا</span>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="owl-item active" style="width: 136.857px;">
+                                            <div class="item">
+                                                <a href="https://iranrenter.com/product/sazgarhamrah" class="item">
+                                                    <div class="_img_link">
+                                                        <div class="img_box">
+                                                            <img src="https://iranrenter.com/static/products/IRP4908/5d32caa840af2_sazgarhamrah-1563609681.jpg" alt="">
+                                                        </div>
+                                                        <span>سازگار همراه</span>
+                                                    </div>
+                                                </a>
+                                                <a href="https://iranrenter.com/product/a-mobile" class="item">
+                                                    <div class="_img_link">
+                                                        <div class="img_box">
+                                                            <img src="https://iranrenter.com/static/products/IRP5084/5dfa120774de9_a-mobile-1576669592.jpg" alt="">
+                                                        </div>
+                                                        <span>اهواز موبایل</span>
+                                                    </div>
+                                                </a>
+                                                <a href="https://iranrenter.com/product/sedastore" class="item">
+                                                    <div class="_img_link">
+                                                        <div class="img_box">
+                                                            <img src="https://iranrenter.com/static/products/IRP5107/5e0760a4af73c_sedastore-1577539224.jpg" alt="">
+                                                        </div>
+                                                        <span>صدا استور</span>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="owl-nav">
+                                    <button type="button" role="presentation" class="owl-prev disabled"><span aria-label="Previous">‹</span></button>
+                                    <button type="button" role="presentation" class="owl-next"><span aria-label="Next">›</span></button>
+                                </div>
+                                <div class="owl-dots disabled"></div>
+                            </div>
+                        </div>
+
+                    </li>
+                    <li ng-class="{_active: category == 'book'}">
+                        <a id="GTM-top-nav-cat-digital" ng-click="setcat('book')">
+                                                                ترجمه کتاب
+                                                            </a>
+                        <div class="_submenu _levelTwo" style="display: block; opacity: 1;" ng-show="category == 'book'">
+                            <div class="owl-carousel _d_menu_slider owl-rtl owl-loaded owl-drag owl-hidden">
+
+                                <div class="owl-stage-outer">
+                                    <div class="owl-stage" style="transform: translate3d(0px, 0px, 0px); transition: all 0s ease 0s; width: 4790px;">
+                                        <div class="owl-item active" style="width: 136.857px;">
+                                            <div class="item">
+                                                <a href="https://iranrenter.com/product/digikala" class="item">
+                                                    <div class="_img_link">
+                                                        <div class="img_box">
+                                                            <img src="https://iranrenter.com/static/products/IRP4823/5d25829f00a06_digikala-2-1562739343.jpg" alt="">
+                                                        </div>
+                                                        <span>دیجی کالا2</span>
+                                                    </div>
+                                                </a>
+                                                <a href="https://iranrenter.com/product/gsmpro" class="item">
+                                                    <div class="_img_link">
+                                                        <div class="img_box">
+                                                            <img src="https://iranrenter.com/static/products/IRP5113/5e09c2c063a93_gsmpro-1577697873.jpg" alt="">
+                                                        </div>
+                                                        <span>جی اس ام پرو</span>
+                                                    </div>
+                                                </a>
+                                                <a href="https://iranrenter.com/product/barsashop" class="item">
+                                                    <div class="_img_link">
+                                                        <div class="img_box">
+                                                            <img src="https://iranrenter.com/static/products/IRP5082/5df9ef117a686_barsashop-1576660638.jpg" alt="">
+                                                        </div>
+                                                        <span>بارثاشاپ</span>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="owl-item active" style="width: 136.857px;">
+                                            <div class="item">
+                                                <a href="https://iranrenter.com/product/tehranspeaker" class="item">
+                                                    <div class="_img_link">
+                                                        <div class="img_box">
+                                                            <img src="https://iranrenter.com/static/products/IRP4919/5d4014ce59a42_tehranspeaker-1564480613.jpg" alt="">
+                                                        </div>
+                                                        <span>تهران اسپیکر</span>
+                                                    </div>
+                                                </a>
+                                                <a href="https://iranrenter.com/product/pixelkala" class="item">
+                                                    <div class="_img_link">
+                                                        <div class="img_box">
+                                                            <img src="https://iranrenter.com/static/products/IRP5073/5df4aee399f71_pixelkala-1576316498.jpg" alt="">
+                                                        </div>
+                                                        <span>پیکسل کالا</span>
+                                                    </div>
+                                                </a>
+                                                <a href="https://iranrenter.com/product/digikomak" class="item">
+                                                    <div class="_img_link">
+                                                        <div class="img_box">
+                                                            <img src="https://iranrenter.com/static/products/IRP5068/5df0deba6d05e_digikomak-1576066251.jpg" alt="">
+                                                        </div>
+                                                        <span>دیجی کمک</span>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="owl-item active" style="width: 136.857px;">
+                                            <div class="item">
+                                                <a href="https://iranrenter.com/product/mtplus" class="item">
+                                                    <div class="_img_link">
+                                                        <div class="img_box">
+                                                            <img src="https://iranrenter.com/static/products/IRP5065/5df0ce41e6268_mtplus-1576062410.jpg" alt="">
+                                                        </div>
+                                                        <span>مایکروتل پلاس</span>
+                                                    </div>
+                                                </a>
+                                                <a href="https://iranrenter.com/product/alireza-shop" class="item">
+                                                    <div class="_img_link">
+                                                        <div class="img_box">
+                                                            <img src="https://iranrenter.com/static/products/IRP5117/5e0b0933d3cf9_alireza-shop-1577781379.jpg" alt="">
+                                                        </div>
+                                                        <span>فروشگاه علیرضا</span>
+                                                    </div>
+                                                </a>
+                                                <a href="https://iranrenter.com/product/hitkala" class="item">
+                                                    <div class="_img_link">
+                                                        <div class="img_box">
+                                                            <img src="https://iranrenter.com/static/products/IRP4890/5d25a2967f3f6_hitkala-1562747472.jpg" alt="">
+                                                        </div>
+                                                        <span>هیت کالا</span>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="owl-item active" style="width: 136.857px;">
+                                            <div class="item">
+                                                <a href="https://iranrenter.com/product/fmava" class="item">
+                                                    <div class="_img_link">
+                                                        <div class="img_box">
+                                                            <img src="https://iranrenter.com/static/products/IRP5183/5e36b4542a018_fmava-1580643212.jpg" alt="">
+                                                        </div>
+                                                        <span>اوا</span>
+                                                    </div>
+                                                </a>
+                                                <a href="https://iranrenter.com/product/malltina" class="item">
+                                                    <div class="_img_link">
+                                                        <div class="img_box">
+                                                            <img src="https://iranrenter.com/static/products/IRP5178/5e3582d5cfd75_malltina-1580565028.jpg" alt="">
+                                                        </div>
+                                                        <span>مالتینا</span>
+                                                    </div>
+                                                </a>
+                                                <a href="https://iranrenter.com/product/mobileabi" class="item">
+                                                    <div class="_img_link">
+                                                        <div class="img_box">
+                                                            <img src="https://iranrenter.com/static/products/IRP5176/5e300ea479a87_mobileabi-1580204462.jpg" alt="">
+                                                        </div>
+                                                        <span>موبایل آبی</span>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="owl-item active" style="width: 136.857px;">
+                                            <div class="item">
+                                                <a href="https://iranrenter.com/product/digicenter" class="item">
+                                                    <div class="_img_link">
+                                                        <div class="img_box">
+                                                            <img src="https://iranrenter.com/static/products/IRP5175/5e2fff5918e99_digicenter-1580203686.jpg" alt="">
+                                                        </div>
+                                                        <span>دیجی سنتر</span>
+                                                    </div>
+                                                </a>
+                                                <a href="https://iranrenter.com/product/alts-coin" class="item">
+                                                    <div class="_img_link">
+                                                        <div class="img_box">
+                                                            <img src="https://iranrenter.com/static/products/IRP5125/5e147f5551627_alts-coin-1578401165.jpg" alt="">
+                                                        </div>
+                                                        <span>آلتس کوین</span>
+                                                    </div>
+                                                </a>
+                                                <a href="https://iranrenter.com/product/samancom" class="item">
+                                                    <div class="_img_link">
+                                                        <div class="img_box">
+                                                            <img src="https://iranrenter.com/static/products/IRP4976/5d93207e43eab_samancom-1569922954.jpg" alt="">
+                                                        </div>
+                                                        <span>سامان کام</span>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="owl-item active" style="width: 136.857px;">
+                                            <div class="item">
+                                                <a href="https://iranrenter.com/product/toofunclub" class="item">
+                                                    <div class="_img_link">
+                                                        <div class="img_box">
+                                                            <img src="https://iranrenter.com/static/products/IRP4943/5d6b992b8fccd_toofunclub-1567332638.jpg" alt="">
+                                                        </div>
+                                                        <span>مرکز بازی توفان</span>
+                                                    </div>
+                                                </a>
+                                                <a href="https://iranrenter.com/product/easymarket" class="item">
+                                                    <div class="_img_link">
+                                                        <div class="img_box">
+                                                            <img src="https://iranrenter.com/static/products/IRP5036/5dde6bd82c363_easymarket-1574857545.jpg" alt="">
+                                                        </div>
+                                                        <span>ایزی مارکت</span>
+                                                    </div>
+                                                </a>
+                                                <a href="https://iranrenter.com/product/shanikala" class="item">
+                                                    <div class="_img_link">
+                                                        <div class="img_box">
+                                                            <img src="https://iranrenter.com/static/products/IRP4949/5d6a619450e8e_shanikala-1567252825.jpg" alt="">
+                                                        </div>
+                                                        <span>شانی کالا</span>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="owl-item active" style="width: 136.857px;">
+                                            <div class="item">
+                                                <a href="https://iranrenter.com/product/sazgarhamrah" class="item">
+                                                    <div class="_img_link">
+                                                        <div class="img_box">
+                                                            <img src="https://iranrenter.com/static/products/IRP4908/5d32caa840af2_sazgarhamrah-1563609681.jpg" alt="">
+                                                        </div>
+                                                        <span>سازگار همراه</span>
+                                                    </div>
+                                                </a>
+                                                <a href="https://iranrenter.com/product/a-mobile" class="item">
+                                                    <div class="_img_link">
+                                                        <div class="img_box">
+                                                            <img src="https://iranrenter.com/static/products/IRP5084/5dfa120774de9_a-mobile-1576669592.jpg" alt="">
+                                                        </div>
+                                                        <span>اهواز موبایل</span>
+                                                    </div>
+                                                </a>
+                                                <a href="https://iranrenter.com/product/sedastore" class="item">
+                                                    <div class="_img_link">
+                                                        <div class="img_box">
+                                                            <img src="https://iranrenter.com/static/products/IRP5107/5e0760a4af73c_sedastore-1577539224.jpg" alt="">
+                                                        </div>
+                                                        <span>صدا استور</span>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="owl-nav">
+                                    <button type="button" role="presentation" class="owl-prev disabled"><span aria-label="Previous">‹</span></button>
+                                    <button type="button" role="presentation" class="owl-next"><span aria-label="Next">›</span></button>
+                                </div>
+                                <div class="owl-dots disabled"></div>
+                            </div>
+                        </div>
+
+                    </li>
+                    <li ng-class="{_active: category == 'film'}">
+                        <a id="GTM-top-nav-cat-digital" ng-click="setcat('film')">
+                                                                ترجمه فیلم
+                                                            </a>
+                        <div class="_submenu _levelTwo" style="display: block; opacity: 1;" ng-show="category == 'film'">
+                            <div class="owl-carousel _d_menu_slider owl-rtl owl-loaded owl-drag owl-hidden">
+
+                                <div class="owl-stage-outer">
+                                    <div class="owl-stage" style="transform: translate3d(0px, 0px, 0px); transition: all 0s ease 0s; width: 4790px;">
+                                        <div class="owl-item active" style="width: 136.857px;">
+                                            <div class="item">
+                                                <a href="https://iranrenter.com/product/digikala" class="item">
+                                                    <div class="_img_link">
+                                                        <div class="img_box">
+                                                            <img src="https://iranrenter.com/static/products/IRP4823/5d25829f00a06_digikala-2-1562739343.jpg" alt="">
+                                                        </div>
+                                                        <span>دیجی کالا</span>
+                                                    </div>
+                                                </a>
+                                                <a href="https://iranrenter.com/product/gsmpro" class="item">
+                                                    <div class="_img_link">
+                                                        <div class="img_box">
+                                                            <img src="https://iranrenter.com/static/products/IRP5113/5e09c2c063a93_gsmpro-1577697873.jpg" alt="">
+                                                        </div>
+                                                        <span>جی اس ام پرو</span>
+                                                    </div>
+                                                </a>
+                                                <a href="https://iranrenter.com/product/barsashop" class="item">
+                                                    <div class="_img_link">
+                                                        <div class="img_box">
+                                                            <img src="https://iranrenter.com/static/products/IRP5082/5df9ef117a686_barsashop-1576660638.jpg" alt="">
+                                                        </div>
+                                                        <span>بارثاشاپ</span>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="owl-item active" style="width: 136.857px;">
+                                            <div class="item">
+                                                <a href="https://iranrenter.com/product/tehranspeaker" class="item">
+                                                    <div class="_img_link">
+                                                        <div class="img_box">
+                                                            <img src="https://iranrenter.com/static/products/IRP4919/5d4014ce59a42_tehranspeaker-1564480613.jpg" alt="">
+                                                        </div>
+                                                        <span>تهران اسپیکر</span>
+                                                    </div>
+                                                </a>
+                                                <a href="https://iranrenter.com/product/pixelkala" class="item">
+                                                    <div class="_img_link">
+                                                        <div class="img_box">
+                                                            <img src="https://iranrenter.com/static/products/IRP5073/5df4aee399f71_pixelkala-1576316498.jpg" alt="">
+                                                        </div>
+                                                        <span>پیکسل کالا</span>
+                                                    </div>
+                                                </a>
+                                                <a href="https://iranrenter.com/product/digikomak" class="item">
+                                                    <div class="_img_link">
+                                                        <div class="img_box">
+                                                            <img src="https://iranrenter.com/static/products/IRP5068/5df0deba6d05e_digikomak-1576066251.jpg" alt="">
+                                                        </div>
+                                                        <span>دیجی کمک</span>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="owl-item active" style="width: 136.857px;">
+                                            <div class="item">
+                                                <a href="https://iranrenter.com/product/mtplus" class="item">
+                                                    <div class="_img_link">
+                                                        <div class="img_box">
+                                                            <img src="https://iranrenter.com/static/products/IRP5065/5df0ce41e6268_mtplus-1576062410.jpg" alt="">
+                                                        </div>
+                                                        <span>مایکروتل پلاس</span>
+                                                    </div>
+                                                </a>
+                                                <a href="https://iranrenter.com/product/alireza-shop" class="item">
+                                                    <div class="_img_link">
+                                                        <div class="img_box">
+                                                            <img src="https://iranrenter.com/static/products/IRP5117/5e0b0933d3cf9_alireza-shop-1577781379.jpg" alt="">
+                                                        </div>
+                                                        <span>فروشگاه علیرضا</span>
+                                                    </div>
+                                                </a>
+                                                <a href="https://iranrenter.com/product/hitkala" class="item">
+                                                    <div class="_img_link">
+                                                        <div class="img_box">
+                                                            <img src="https://iranrenter.com/static/products/IRP4890/5d25a2967f3f6_hitkala-1562747472.jpg" alt="">
+                                                        </div>
+                                                        <span>هیت کالا</span>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="owl-item active" style="width: 136.857px;">
+                                            <div class="item">
+                                                <a href="https://iranrenter.com/product/fmava" class="item">
+                                                    <div class="_img_link">
+                                                        <div class="img_box">
+                                                            <img src="https://iranrenter.com/static/products/IRP5183/5e36b4542a018_fmava-1580643212.jpg" alt="">
+                                                        </div>
+                                                        <span>اوا</span>
+                                                    </div>
+                                                </a>
+                                                <a href="https://iranrenter.com/product/malltina" class="item">
+                                                    <div class="_img_link">
+                                                        <div class="img_box">
+                                                            <img src="https://iranrenter.com/static/products/IRP5178/5e3582d5cfd75_malltina-1580565028.jpg" alt="">
+                                                        </div>
+                                                        <span>مالتینا</span>
+                                                    </div>
+                                                </a>
+                                                <a href="https://iranrenter.com/product/mobileabi" class="item">
+                                                    <div class="_img_link">
+                                                        <div class="img_box">
+                                                            <img src="https://iranrenter.com/static/products/IRP5176/5e300ea479a87_mobileabi-1580204462.jpg" alt="">
+                                                        </div>
+                                                        <span>موبایل آبی</span>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="owl-item active" style="width: 136.857px;">
+                                            <div class="item">
+                                                <a href="https://iranrenter.com/product/digicenter" class="item">
+                                                    <div class="_img_link">
+                                                        <div class="img_box">
+                                                            <img src="https://iranrenter.com/static/products/IRP5175/5e2fff5918e99_digicenter-1580203686.jpg" alt="">
+                                                        </div>
+                                                        <span>دیجی سنتر</span>
+                                                    </div>
+                                                </a>
+                                                <a href="https://iranrenter.com/product/alts-coin" class="item">
+                                                    <div class="_img_link">
+                                                        <div class="img_box">
+                                                            <img src="https://iranrenter.com/static/products/IRP5125/5e147f5551627_alts-coin-1578401165.jpg" alt="">
+                                                        </div>
+                                                        <span>آلتس کوین</span>
+                                                    </div>
+                                                </a>
+                                                <a href="https://iranrenter.com/product/samancom" class="item">
+                                                    <div class="_img_link">
+                                                        <div class="img_box">
+                                                            <img src="https://iranrenter.com/static/products/IRP4976/5d93207e43eab_samancom-1569922954.jpg" alt="">
+                                                        </div>
+                                                        <span>سامان کام</span>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="owl-item active" style="width: 136.857px;">
+                                            <div class="item">
+                                                <a href="https://iranrenter.com/product/toofunclub" class="item">
+                                                    <div class="_img_link">
+                                                        <div class="img_box">
+                                                            <img src="https://iranrenter.com/static/products/IRP4943/5d6b992b8fccd_toofunclub-1567332638.jpg" alt="">
+                                                        </div>
+                                                        <span>مرکز بازی توفان</span>
+                                                    </div>
+                                                </a>
+                                                <a href="https://iranrenter.com/product/easymarket" class="item">
+                                                    <div class="_img_link">
+                                                        <div class="img_box">
+                                                            <img src="https://iranrenter.com/static/products/IRP5036/5dde6bd82c363_easymarket-1574857545.jpg" alt="">
+                                                        </div>
+                                                        <span>ایزی مارکت</span>
+                                                    </div>
+                                                </a>
+                                                <a href="https://iranrenter.com/product/shanikala" class="item">
+                                                    <div class="_img_link">
+                                                        <div class="img_box">
+                                                            <img src="https://iranrenter.com/static/products/IRP4949/5d6a619450e8e_shanikala-1567252825.jpg" alt="">
+                                                        </div>
+                                                        <span>شانی کالا</span>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="owl-item active" style="width: 136.857px;">
+                                            <div class="item">
+                                                <a href="https://iranrenter.com/product/sazgarhamrah" class="item">
+                                                    <div class="_img_link">
+                                                        <div class="img_box">
+                                                            <img src="https://iranrenter.com/static/products/IRP4908/5d32caa840af2_sazgarhamrah-1563609681.jpg" alt="">
+                                                        </div>
+                                                        <span>سازگار همراه</span>
+                                                    </div>
+                                                </a>
+                                                <a href="https://iranrenter.com/product/a-mobile" class="item">
+                                                    <div class="_img_link">
+                                                        <div class="img_box">
+                                                            <img src="https://iranrenter.com/static/products/IRP5084/5dfa120774de9_a-mobile-1576669592.jpg" alt="">
+                                                        </div>
+                                                        <span>اهواز موبایل</span>
+                                                    </div>
+                                                </a>
+                                                <a href="https://iranrenter.com/product/sedastore" class="item">
+                                                    <div class="_img_link">
+                                                        <div class="img_box">
+                                                            <img src="https://iranrenter.com/static/products/IRP5107/5e0760a4af73c_sedastore-1577539224.jpg" alt="">
+                                                        </div>
+                                                        <span>صدا استور</span>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="owl-nav">
+                                    <button type="button" role="presentation" class="owl-prev disabled"><span aria-label="Previous">‹</span></button>
+                                    <button type="button" role="presentation" class="owl-next"><span aria-label="Next">›</span></button>
+                                </div>
+                                <div class="owl-dots disabled"></div>
+                            </div>
+                        </div>
+
+                    </li>
+                </ul>
+            </div>
+        </div> -->
+    </li>
+    <li class="has_submenu">
+        <a href="/" ng-click="gotohiw();">گیگاکار چگونه کار می کند</a>
+    </li>
+    <li class="has_submenu">
+        <a href="/" ng-click="gotohiw();">پرداخت امن</a>
+    </li>
+</ul>
+      </ul>
+      <!-- <ul class="col-md-8 col-sm-7 hidden-xs nav navbar-nav primary-pages pull-right">
           <li style="" data-match-route="/add"><a href="/add">
              پروژه جدید
           </a></li>
@@ -89,6 +1236,6 @@
               	(رایگان)
               </span>
           </a></li>
-      </ul>
+      </ul> -->
     </div>
   </div>

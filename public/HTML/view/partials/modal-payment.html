@@ -8,17 +8,20 @@
           <h2 class="text-center"> <span class="theme_bolder"> پرداخت</span></h2>
           <div class="text-center" style="padding: 0 50px;">
               <p>
-                  <span class="highlight-blue">اونیتا</span> پلتفرمی برای تسهیل ارتباط بین مترجمین حرفه ای و افرادی است که نیاز ترجمه دارند
+                  <!-- <span class="highlight-blue">اونیتا</span> پلتفرمی برای تسهیل ارتباط بین مترجمین حرفه ای و افرادی است که نیاز ترجمه دارند -->
               </p>
           </div>
       </div>
   </div>
   <div class="row">
-    <div class="col-sm-8 col-sm-offset-2" style="direction: ltr;">
+    <div class="col-sm-8 col-sm-offset-2" ng-show="!user.tel_verified">
+      لطفا از ناحیه کاربری ، شماره موبایل خود را تایید نمایید 
+    </div>
+    <div class="col-sm-8 col-sm-offset-2" style="direction: ltr;" ng-show="user.tel_verified">
       <form method="post" ng-submit="pay()" name="paymentForm">
         <div class="form-group has-feedback">
             <div class="input-group">
-              <span class="input-group-addon">ریال</span>
+              <span class="input-group-addon"> تومان</span>
               <input type="text" class="form-control input-lg" id="paymentamount" name="payment-amount" ng-model="amount">
             </div>
             <!-- <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span> -->

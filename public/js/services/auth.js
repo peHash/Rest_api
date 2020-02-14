@@ -1,4 +1,4 @@
-+ function() {
+  + function() {
 angular.module('MyApp')
   .factory('Auth', function($http, $location, $rootScope, $alert, $window, toaster) {
     var token = $window.localStorage.token;
@@ -21,30 +21,34 @@ angular.module('MyApp')
 
       user: function() {
         if ($rootScope.currentUser) {
-          return $rootScope.currentUser;
+          return $http.post('/auth/getinfo', {id:$rootScope.currentUser._id}).then(function(data){
+            
+            $rootScope.user = data.data;
+          }, function (response){
+            toaster.pop('error','lOGIN FAILED', err);
+            delete $window.localStorage.token;
+          })
         } else 
         return;
       },
       login: function(user) {
         return $http.post('/auth/login', user)
-          .success(function(data) {
-            $window.localStorage.token = data.token;
-            var payload = JSON.parse($window.atob(data.token.split('.')[1]));
+          .then(function(data) {
+            $window.localStorage.token = data.data.token;
+            var payload = JSON.parse($window.atob(data.data.token.split('.')[1]));
             $rootScope.currentUser = payload.user;
             $rootScope.signedin = true;
             $location.path('/');
-          })
-          .error(function(err) {
+          }, function(err) {
             toaster.pop('error','lOGIN FAILED', err);
             delete $window.localStorage.token;
           });
       },
       signup: function(user) {
         return $http.post('/auth/signup', user)
-          .success(function() {
+          .then(function() {
             $location.path('/login');
-          })
-          .error(function(err) {
+          }, function(err) {
             toaster.pop('error','SIGNUP FAILED', err);
           });
       },

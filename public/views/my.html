@@ -96,6 +96,40 @@
 
 </style>
 
+<!-- tag-add -->
+
+<script type="text/ng-template" id="tags-add.html">
+<div class="modal-header">
+            <h3 class="modal-title"> تگ ها </h3>
+</div>
+<div class="modal-body" style="min-height:100px;">
+	<div class="col-md-12">
+        <label> 
+            تگ ها
+        </label>
+       <md-content md-theme="docs-dark" layout-gt-sm="row" layout-padding="" class="layout-padding _md md-docs-dark-theme layout-gt-sm-row">
+    <div>
+
+    	
+      <md-input-container class="md-docs-dark-theme md-input-has-value">
+        <label for="input_2">تگ</label>
+        <input ng-model="tag" class="" id="input_2" style="">
+      </md-input-container>
+
+    </div>
+  </md-content>
+    </div>
+    
+</div>
+<div class="modal-footer">
+    <button class="btn btn-lg btn-action" ng-click="add_tag(tag)"> ثبت </button>
+    <button class="btn btn-lg btn-link" ng-click="cancel()"> انصراف </button>
+</div>
+</div>
+</script>
+
+<!-- tag-edit -->
+
 <!-- resume-add -->
 
 <script type="text/ng-template" id="resume-add.html">
@@ -318,7 +352,7 @@
 	            <h3 class="modal-title"> تصویر پروفایل </h3>
 	</div>
 	<div class="modal-body" style="min-height:350px;">
-
+		
 	    </div>
 	</div>
 	<div class="modal-footer">
@@ -408,13 +442,13 @@
 
 }
 
-.my-profile-user-image {
+.my-profile-useri-image {
 	float: right;
 }
 @media screen and (min-width: 990px) {
 }
 @media screen and (max-width: 990px) {
-	.my-profile-user-image {
+	.my-profile-useri-image {
 		float: none;
 		margin: 0 auto;
 		display: block;
@@ -427,11 +461,9 @@
 	<div class="" ng-mouseover="trigger_in();" ng-mouseleave="trigger_out();">
 		<div class="col-md-12 p-0 m-0">
 			<div class="col-md-3 col-sm-12 col-xs-12 p-0 m-0">
-				<div class="my-profile-user-image">
-					<img id="user-portrait" class="avatar avatar-lg expert-profile-pic" ng-hide="croppedDataUrl" ng-src="{{user.image || 'images/ads.png'}}" ng-click="profile_image_open('lg')"/>
-					<img id="user-portrait" class="avatar avatar-lg expert-profile-pic" ng-show="croppedDataUrl" ng-src="{{croppedDataUrl}}"/>
-					<span class="profile-name" style="margin-top:0; text-align:center;"> {{user.firstName}} {{user.lastName}}</span>
-					
+				<div class="my-profile-useri-image">
+					<img id="useri-portrait" class="avatar avatar-lg expert-profile-pic" ng-hide="croppedDataUrl" ng-src="{{useri.image || 'images/ads.png'}}" />
+					<img id="useri-portrait" class="avatar avatar-lg expert-profile-pic" ng-show="croppedDataUrl" ng-src="{{croppedDataUrl}}"/>
 				</div>
 				<!-- <div class="media-body">
 					<div class="col-md-8">
@@ -442,13 +474,13 @@
 					</div>
 					<div class="expert-profile-skills">
 						<a class="blueLink tag" 
-						ng-repeat="tag in user.tags" 
+						ng-repeat="tag in useri.tags" 
 						ng-html="/browse/tag/{{tag}}">
 
 							{{tag}}
 
 						</a>
-						<span class="ng-cloak" ng-hide="user.tags">
+						<span class="ng-cloak" ng-hide="useri.tags">
 							شما مهارتی اضافه نکره اید
 						</span>
 
@@ -464,9 +496,19 @@
 			<div class="col-md-9 col-sm-12 col-xs-12 m-0 p-0">
 				<div class="tabset">
 					<ul class="">
-						<li ng-class="{active: tab == 'activity', unactive: tab != 'activity'}" class="">
+						<li ng-class="{active: tab == 'info', unactive: tab != 'info'}" class="">
+							<a ng-href="" ng-class="" ng-click="tabSelector('info')">
+								 اطلاعات
+							</a>
+						</li>
+						<li ng-class="{active: tab == 'activity', unactive: tab != 'activity'}" class="" ng-show="useri.freelancer">
 							<a ng-href="" ng-class="" ng-click="tabSelector('activity')">
 								فعالیت ها
+							</a>
+						</li>
+						<li ng-class="{active: tab == 'tags', unactive: tab != 'tags'}" class="" ng-show="useri.freelancer">
+							<a ng-href="" ng-class="" ng-click="tabSelector('tags')">
+								تگ ها
 							</a>
 						</li>
 						<li ng-class="{active: tab == 'profilePic', unactive: tab != 'profilePic'}" class="">
@@ -474,17 +516,17 @@
 								تصویر پروفایل 
 							</a>
 						</li>
-						<li ng-class="{active: tab == 'resume', unactive: tab != 'resume'}" class="">
+						<li ng-class="{active: tab == 'resume', unactive: tab != 'resume'}" class="" ng-show="useri.freelancer">
 							<a ng-href="" ng-class="" ng-click="tabSelector('resume')">
 								رزومه کاری 
 							</a>
 						</li>
-						<li ng-class="{active: tab == 'edu', unactive: tab != 'edu'}" class="">
+						<li ng-class="{active: tab == 'edu', unactive: tab != 'edu'}" class="" ng-show="useri.freelancer">
 							<a ng-href="" ng-class="" ng-click="tabSelector('edu')">
 								تحصیلات 
 							</a>
 						</li>
-						<li ng-class="{active: tab == 'socialNetwork', unactive: tab != 'socialNetwork'}" class="">
+						<li ng-class="{active: tab == 'socialNetwork', unactive: tab != 'socialNetwork'}" class="" ng-show="useri.freelancer">
 							<a ng-href="" ng-class="" ng-click="tabSelector('socialNetwork')">
 								شبکه های اجتماعی
 							</a>
@@ -496,17 +538,105 @@
 						</li>
 					</ul>
 				</div>
+			<div class="air-card" ng-show="tab == 'info'">
+				<legend>
+					<span>اطلاعات</span>
+				</legend>
+				<section class="p-lg-left">
+					<md-content md-theme="docs-dark" layout-gt-sm="row" layout-padding="">
+					<md-input-container>
+        <md-checkbox ng-model="useri.freelancer" aria-label="Checkbox 1">
+            مترجم هستید ؟
+          </md-checkbox>
+      </md-input-container>
+  </md-content>
+									 <md-content md-theme="docs-dark" layout-gt-sm="row" layout-padding="">
+    <div>
+
+    	
+      <md-input-container>
+        <label>نام و نام خانوادگی</label>
+        <input ng-model="useri.fullname">
+      </md-input-container>
+
+      <md-input-container>
+        <label>شماره تماس</label>
+        <input ng-model="useri.tel">
+      </md-input-container>
+    </div>
+  </md-content>
+  <div class="freelancer" ng-show="useri.freelancer">
+   <md-content md-theme="docs-dark" layout-gt-sm="row" layout-padding="">
+ 	<md-input-container class="md-block" flex-gt-sm="">
+            <label>نرخ / ساعت (هزار تومان)</label>
+        <input ng-model="useri.rate"> 
+  </md-content>
+ 	<md-content md-theme="docs-dark" layout-gt-sm="row" layout-padding="">
+ 	<md-input-container class="md-block" flex-gt-sm="">
+            <label>شهر سکونت</label>
+        <input ng-model="useri.city"> 
+  </md-content>
+  <md-content md-theme="docs-dark" layout-gt-sm="row" layout-padding="">
+ 	<md-input-container class="md-block" flex-gt-sm="">
+            <label>سطح</label>
+            <md-select ng-model="useri.level">
+              <md-option ng-repeat="level in levels" value="{{level}}">
+                {{level}}
+              </md-option>
+            </md-select>
+          </md-input-container>   
+  </md-content>
+    <md-content md-theme="docs-dark" layout-gt-sm="row" layout-padding="">
+ 	<md-input-container class="md-block" flex-gt-sm="">
+            <label>موضوع ترجمه</label>
+            <md-select ng-model="useri.category">
+              <md-option ng-repeat="category in categories" value="{{category}}">
+                {{category}}
+              </md-option>
+            </md-select>
+          </md-input-container>   
+  </md-content>
+  <md-content md-theme="docs-dark" layout-gt-sm="row">
+  	<md-checkbox ng-model="useri.fast" aria-label="Checkbox 1">
+            ترجمه فوری 
+          </md-checkbox>
+  </md-content>
+</div>
+
+    <md-content md-theme="docs-dark" layout-gt-sm="row">
+  	<md-button ng-click="update(useri);" class="md-raised" style="background-color: #2196F3; color: #fff;">آپدیت </md-button>
+  </md-content>
+ 			
+ 
+			</section>
+			</div>
 				<div class="air-card" ng-show="tab == 'activity'">
 				<legend>
 					<span> خلاصه فعالیت ها </span>
 					<i class="ion-plus circle-edit-button ng-cloak" ng-show="is_edit_open" ng-click="summary_edit_open('lg');"></i>
 				</legend>
 				<section class="p-lg-left">
-					<p class="o-break-word o-white-space-pre-line" ng-show="user.summary">
-						{{user.summary}}
+					<p class="o-break-word o-white-space-pre-line" ng-show="useri.summary">
+						{{useri.summary}}
 					</p>
-					<p class="o-break-word o-white-space-pre-line ng-cloak" ng-hide="user.summary">
+					<p class="o-break-word o-white-space-pre-line ng-cloak" ng-hide="useri.summary">
 						شما فعالیتی در رزومه خود اضافه نکرده اید 
+					</p>
+				</section>
+			</div>
+				<div class="air-card" ng-show="tab == 'tags'">
+				<legend>
+					<span> تگ ها </span>
+					<i class="ion-plus circle-edit-button ng-cloak" ng-show="is_edit_open" ng-click="tags_add_open('lg');"></i>
+				</legend>
+				<section class="p-lg-left">
+					<p class="o-break-word o-white-space-pre-line" ng-show="useri.tags[0]">
+    						<a class="blueLink m-0" ng-href="/browse/tag/{{tag}}" ng-repeat="tag in user.tags">
+   									{{tag}}
+							</a>
+					</p>
+					<p class="o-break-word o-white-space-pre-line ng-cloak" ng-hide="useri.tags">
+						شما تگی در رزومه خود اضافه نکرده اید 
 					</p>
 				</section>
 			</div>
@@ -517,13 +647,13 @@
 						<i class="ion-plus circle-edit-button ng-cloak" ng-show="is_edit_open" ng-click="resume_add_open('lg');"></i>
 					</span>
 				</legend>
-				<div class="" data-ng-hide="user.resumes[0].title">
+				<div class="" data-ng-hide="useri.resumes[0].title">
 					<strong>
 						شما رزومه ای اضافه نکرده اید
 					</strong>
 				</div>
-				<div class="" data-ng-show="user.resumes[0].title">
-					<div class="partial" data-ng-repeat="resume in user.resumes track by $index">
+				<div class="" data-ng-show="useri.resumes[0].title">
+					<div class="partial" data-ng-repeat="resume in useri.resumes track by $index">
 						<span class="col-md-9">
 							<strong>
 								{{resume.title}}
@@ -552,13 +682,13 @@
 						<i class="ion-plus circle-edit-button ng-cloak" ng-show="is_edit_open" ng-click="edu_add_open('lg');"></i>
 					</span>
 				</legend>
-				<div class="" data-ng-hide="user.educations[0].name">
+				<div class="" data-ng-hide="useri.educations[0].name">
 					<strong>
 						شما تحصیلاتی وارد نکرده اید
 					</strong>
 				</div>
-				<div class="ng-cloak" data-ng-show="user.educations[0].name">
-					<div class="partial" data-ng-repeat="edu in user.educations track by $index">
+				<div class="ng-cloak" data-ng-show="useri.educations[0].name">
+					<div class="partial" data-ng-repeat="edu in useri.educations track by $index">
 						<span class="col-md-9">
 							<strong>
 								{{edu.name}}
@@ -580,6 +710,15 @@
 					<span> تصویر پروفایل </span>
 				</legend>
 				<div class="col-md-12" style="padding-right:0;padding-left:0">
+					<md-content md-theme="docs-dark" layout-gt-sm="row" layout-padding="">
+						<md-input-container>
+            				<label>URL</label>
+    						<input ng-model="urladdress"> 
+          				</md-input-container>
+    				</md-content>
+    				<md-content md-theme="docs-dark" layout-gt-sm="row">
+      	<md-button ng-click="transfer();" class="md-raised" style="background-color: #2196F3; color: #fff;">ذخیره</md-button>
+        </md-content>
 		   			<form name="myForm">
 		    			<div ngf-drop ng-model="picFile" ngf-pattern="image/*"
 		    			     class="cropArea">

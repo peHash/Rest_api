@@ -78,7 +78,7 @@
               var file = files[i];
               if (!file.$error) {
                 Upload.upload({
-                    url: '/api/v1/uploadFiles',
+                    url: '/api/uploadDocs',
                     data: {
                       file: file  
                     }
@@ -261,11 +261,21 @@
 }();
 + function() {
     angular.module('MyApp')
-    .controller('landingPageCtrl', function($scope, Posts) {
+    .controller('landingPageCtrl', function($scope, Users, User, $window) {
 		$scope.introBtn = 'بزن بریم !';
 		$scope.newsletterPlaceHolder = 'ایمیل شما اینجا ...';
 		$scope.newsletterSignUpValue = 'همین حالا ثبت کن';
-		$scope.posts = Posts.query();
+		$scope.users = Users.query();
+		$scope.useri = $scope.users;
+		$scope.setFreelancer = function(id) {
+			User.get({ _id: id }, function(info) {
+               $scope.useri = info;
+             }); 
+			$window.gotoFreelancer();
+		}
+		$scope.gotohiw = function() {
+			$window.gotoHIW();
+		}
     });  
   }();
 + function() {
@@ -375,6 +385,15 @@
 	};
 	});
 }();
++ function() {
+    angular.module('MyApp')
+    .controller('topCtrl', function($scope, Users, $location, $window) {
+		$scope.introBtn = 'بزن بریم !';
+		$scope.newsletterPlaceHolder = 'ایمیل شما اینجا ...';
+		$scope.newsletterSignUpValue = 'همین حالا ثبت کن';
+		$scope.users = Users.query();
+    });  
+  }();
 + function() {
 	angular.module('MyApp').controller('youtubeCtrl', function ($scope, toaster, $uibModal, $sce) {
 		$scope.watching = false;
@@ -591,7 +610,7 @@
   angular.module('MyApp')
   .controller('LoginCtrl', function($scope, Auth) {
     $scope.login = function() {
-      Auth.login({ email: $scope.email, password: $scope.password });
+      Auth.login({ tel: $scope.tel, password: $scope.password });
     };
     $scope.facebookLogin = function() {
       Auth.facebookLogin();
@@ -605,15 +624,120 @@
 
 + function() {
   angular.module('MyApp')
-  .controller('MainCtrl', function($scope, Show, $window) {
-    
+  .controller('MainCtrl', function($scope, Show, $window, $uibModal, Auth, $rootScope) {
+    $scope.mobile = false;
+    if ($window.innerWidth < 900) {
+      $scope.mobile = true;
+    }
+    Auth.user();
+
+    $scope.openModal = openModal;
+
+    function openModal (group) {
+  switch (group){
+    case 'freelancer':   
+      modalStarter('HTML/view/partials/modal-contactus.html', 'static', contactUsController);
+      break;
+    case 'customer':
+      modalStarter('HTML/view/partials/modal-new_project.html', 'static', newProjectController);
+      break;
+    case 'experts': 
+      modalStarter('HTML/view/partials/modal-experts_list.html', 'false', expertsListController);
+      break;
+    case 'telephone_policy':
+      modalStarter('HTML/view/partials/telephone_policy.html', 'false', telController);
+      break;
+    case 'verification':
+      modalStarter('HTML/view/partials/modal-verification.html', 'false', verificationController);
+      break;
+    case 'payment':
+      modalStarter('HTML/view/partials/modal-payment.html', 'false', paymentController, 'lg');
+  }
+}
+
+// Trigger Modal  modalStarter();
+function modalStarter(template,static,controller, size) {
+    var modalInstance = $uibModal.open({
+      templateUrl: template,
+      // templateUrl : $templateCache.get('signup-modal.html'),
+      size: size ? size : 'lg',
+      backdrop: static ? static : true,
+      backdropStyle: 'background-color: #333;', 
+      controller : controller ? controller : contactUsController
+    });
+  };
+
+// function logout(Auth) {
+//   Auth.logout();
+//   // $route.reload();
+// }
+
+function paymentController($scope, $http, $window) {
+  Auth.user();
+  $scope.pay = function() {
+    var config = {
+      method: 'POST',
+      url: '/api/payment',
+      data: {
+        'url': 'https://pay.ir/payment/send',
+        'api': 'a539036b4734cddd43aa8dd61e593e7c',
+        'amount': parseInt($scope.amount),
+        'redirect': 'http://onita.ir/api/cbpayment'
+        // 'factorNumber': Math.random()*(Math.pow(10,15)).toString()
+      }
+    }
+    $http(config).then(resolve, reject);
+    function resolve(r){$window.location.href = 'https://pay.ir/payment/gateway/' + r.data['transId']};
+    function reject(e){console.log(e)};
+  }
+}
+function verificationController($window,$scope, Auth, toaster, $uibModalInstance, $http, $rootScope){
+$scope.gen = function() {
+  const genver = Math.floor(100000 + Math.random() * 900000).toString();
+    var config = {
+      method: 'POST',
+      url: '/api/genverification',
+      data: {
+        '_id': $rootScope.user._id,
+        'code': genver
+      }
+    }
+    $http(config).then(resolve, reject);
+    function resolve(r){$scope.genver = genver };
+    function reject(e){console.log(e)};
+  }
+  $scope.eval = function() {
+  
+    var config = {
+      method: 'POST',
+      url: '/api/evaluateverification',
+      data: {
+        '_id': $rootScope.user._id,
+        'code': $scope.vercode
+      }
+    }
+    $http(config).then(resolve, reject);
+    function resolve(r){$window.location.href = '/'};
+    function reject(e){console.log(e)};
+  }
+  
+}
+
+function telController($window,$scope, Auth, toaster, $uibModalInstance, $http, $rootScope){
+Auth.user();
+$scope.dismiss = function(){
+  $uibModalInstance.close();
+}
+
+  
+}
     $scope.genres = ['آمار و احتمال مهندسی', 'ریاضی مهندسی', 'مدار های منطقی', 'معادلات دیفرانسیل', 'فیزیک ۱',
       'ریاضی ۱', 'ساختمان داده ها', 'برنامه سازی پیشرفته', 'جبر خطی', 'ریاضی عمومی ۲', 'توابع مختلط',
       'فرآیند تصادفی'];
 
     $scope.headingTitle = '۱۲ درس اول شما';
 
-    console.log($scope.jobs = Show.query());
+    // console.log($scope.jobs = Show.query());
 
     $scope.filterByGenre = function(genre) {
       $scope.shows = Show.query({ genre: genre });
@@ -635,12 +759,12 @@
 
 + function() {
   angular.module('MyApp')
-  .controller('MyCtrl', function($scope, User, $routeParams, $window, $uibModal, $http, Upload, $timeout, toaster, $interval) {
+  .controller('MyCtrl', function($scope,Auth, User, $routeParams, $window, $uibModal, $http, Upload, $timeout, toaster, $interval) {
      $scope.updateUser = function(timer){
       var timer = timer ? timer : 10;
       $timeout(function(){
         User.get({ _id: $routeParams.id }, function(info) {
-          $scope.user = info;
+          $scope.useri = info;
         }); 
       }, timer)
      };
@@ -654,7 +778,9 @@
     $scope.fileUploaded = '';
     $scope.selectedFile = [];
     $scope.response = '';
-    $scope.tab = 'activity';
+    $scope.tab = 'info';
+    $scope.levels = ['حرفه ای' , 'نیمه حرفه ای',  'آماتور'];
+    $scope.categories = ['همه', 'تخصصی', 'مقاله', 'کتاب', 'فیلم', 'محتوا'];
     $scope.tabSelector = function(tab) {
       $scope.tab = tab;
     }
@@ -692,14 +818,36 @@
           // $scope.progress = parseInt(100.0 * evt.loaded / evt.total);
       });
     };
+    $scope.update = function(useri) {
+      $http.post('api/user/', useri).then(function(data){
+        $window.location.href = '/my/' + useri._id;
+      }, function(err){
+        $window.location.href = '/my/' + useri._id;
+      })
+    }
+     $scope.transfer = function() {
+      if ($scope.urladdress) {
+        $http.post('/api/transfer', {'url': $scope.urladdress}).then(function(data){
+             setFreelancerImage(data.data.url)
+           }, function(err) {console.log(err)})
+      };
+    }
+      
+    function setFreelancerImage(url) {
+      $http.post('/api/setimage', {'url': url, 'user': $scope.user}).then(function(data){
+        $window.location.href = '/my/' + $scope.user._id
+      }, function(err){
+        console.log(err)
+      })
+    }
 
   
-    $scope.resume_add_open = function (size) {
+    $scope.tags_add_open = function (size) {
 
       var modalInstance = $uibModal.open({
         animation: $scope.animationsEnabled,
-        templateUrl: 'resume-add.html',
-        controller: 'ResumeCtrl',
+        templateUrl: 'tags-add.html',
+        controller: 'TagsCtrl',
         size: size,
         resolve: {
           user: function() {
@@ -855,6 +1003,8 @@
           $scope.progress = parseInt(100.0 * evt.loaded / evt.total);
       });
     };
+   
+    
 
     $scope.reload = function() {
       $window.location.href = '/my/' + user._id;
@@ -880,6 +1030,38 @@
       },
       function(response){
         alert('your resume didn\'t added successfully ! ');
+        $window.location.href = '/my/' + user._id;
+      });
+
+    };
+
+
+
+
+
+    $scope.cancel = function () {
+      $uibModalInstance.dismiss('cancel');
+    };
+
+     }).controller('TagsCtrl', function($scope, $routeParams, $window, $uibModal, $uibModalInstance, $http, user){
+    $scope.default = '';
+    $scope.tag = '';
+    $scope.add_tag = function(tag) {
+      $http({
+        url: 'api/v1/tag',
+        method: 'POST',
+        data: {
+          user: user,
+          tag: $scope.tag
+        }
+
+      })
+      .then(function(response){
+        alert('تگ با موفقیت اضافه گردید');
+        $window.location.href = '/my/' + user._id;
+      },
+      function(response){
+        alert('متاسفانه مشکلی پیش آمد');
         $window.location.href = '/my/' + user._id;
       });
 
@@ -1016,9 +1198,17 @@
 
 + function() {
   angular.module('MyApp')
-  .controller('navbarCtrl', function($scope, $window, Auth, $routeParams, $route, $location) {
+  .controller('navbarCtrl', function($rootScope, $scope, $window, Auth, $routeParams, $route, $location, $anchorScroll) {
   	$scope.userdown = false;
+    $scope.dropdown2 = false;
+    $scope.category = 'special';
+    $scope.styleobj = {};
     $scope.leftNavBtn = urlExtractor($location.path());
+    $scope.gotohiw = function() {
+      // set the location.hash to the id of
+      // the element you wish to scroll to.
+      $window.gotoHIW()
+    }
     $scope.logout = function() {
 	  	Auth.logout();
 		$window.location.href = '/';
@@ -1026,7 +1216,22 @@
     };
     $scope.usertoggle = function() {
     	$scope.userdown = !($scope.userdown);
+      $scope.dropdown2 = false;
     };
+    $scope.droptoggle = function() {
+      $scope.dropdown2 = !($scope.dropdown2)
+    }
+    $scope.setcat = function(cat) {
+      $scope.category = cat;
+    }
+      $scope.getStyle= function(){  
+     if($rootScope.currentUser){
+        $scope.styleobj.right = '-270px';
+     }else{
+        $scope.styleobj.right = '0px';  
+     }
+     return $scope.styleobj;
+  }
   });
   function urlExtractor(location) {
     if (location.includes('article')){
@@ -1045,7 +1250,7 @@
               })
               .then(function(response){
                      if (response.status == "200") {
-                            $scope.user = response.data.data;
+                            $scope.useri = response.data.data;
                      };
               }, function(response){
                      alert('your request couldn\'t be proceed, sorry !');
@@ -1060,11 +1265,9 @@ angular.module('MyApp')
   .controller('SignupCtrl', function($scope, Auth) {
     $scope.signup = function() {
       Auth.signup({
-        firstName: $scope.firstName,
-        lastName: $scope.lastName,
-        cellPhoneNumber: $scope.cellPhoneNumber,
-        email: $scope.email,
-        password: $scope.password
+        tel: $scope.cellPhoneNumber,
+        password: $scope.password, 
+        freelancer: $scope.freelancer
       });
     };
     $scope.pageClass = 'fadeZoom'

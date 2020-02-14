@@ -1,11 +1,22 @@
-+ function() {
+    + function() {
     //angular.module('MyApp', ['ngResource', 'ngMessages', 'ngRoute', 'mgcrea.ngStrap', 'ui.bootstrap', 'ui.date', 'ui.bootstrap.persian.datepicker','ui.bootstrap.datepicker', 'angularMoment', 'mdChips', 'ngUpload', 'ngCkeditor', 'ngSanitize'])
-angular.module('MyApp', ['ngResource', 'ngMessages', 'ngRoute', 'mgcrea.ngStrap', 'ui.bootstrap', 'ui.date','ui.bootstrap.datepicker', 'angularMoment', 'mdChips', 'ngUpload', 'ngCkeditor', 'ngSanitize', 'ngFileUpload', 'ngImgCrop', 'toaster', 'ngAnimate', 'ADM-dateTimePicker', 'com.2fdevs.videogular', 'com.2fdevs.videogular.plugins.controls'])
+angular.module('MyApp', ['ngResource','ngMaterial', 'ngMessages', 'ngRoute', 'mgcrea.ngStrap', 'ui.bootstrap', 'ui.date','ui.bootstrap.datepicker', 'angularMoment', 'mdChips', 'ngUpload', 'ngCkeditor', 'ngSanitize', 'ngFileUpload', 'ngImgCrop', 'toaster', 'ngAnimate', 'ADM-dateTimePicker', 'com.2fdevs.videogular', 'com.2fdevs.videogular.plugins.controls'])
 .config(function ($routeProvider, $locationProvider) {
         $routeProvider
             .when('/', {
                 templateUrl: 'views/landing.html',
                 controller: 'landingPageCtrl', 
+                resolve: {
+                    // delay: function($q, $timeout){
+                    //     var delay = $q.defer();
+                    //     $timeout(delay.resolve, 4000);
+                    //     return delay.promise;
+                    // }
+                }
+            })
+            .when('/top30', {
+                templateUrl: 'views/top-freelancers.html',
+                controller: 'topCtrl', 
                 resolve: {
                     // delay: function($q, $timeout){
                     //     var delay = $q.defer();
@@ -93,7 +104,8 @@ angular.module('MyApp', ['ngResource', 'ngMessages', 'ngRoute', 'mgcrea.ngStrap'
             .otherwise({
                 redirectTo: '/'
             });
-    $locationProvider.html5Mode(true);
+    $locationProvider.html5Mode({enabled: true, requireBase: false});
+    $locationProvider.hashPrefix('');
   })
   .config(function ($httpProvider) {
     $httpProvider.interceptors.push(function ($rootScope, $q, $window, $location) {
@@ -108,11 +120,14 @@ angular.module('MyApp', ['ngResource', 'ngMessages', 'ngRoute', 'mgcrea.ngStrap'
           if (response.status === 401 || response.status === 403) {
             $location.path('/login');
           } else if (response.status === 400) {
-            // User Access token has expired 
-            delete $window.localStorage.token;
-            $rootScope.currentUser = null;
-            $rootScope.signedin = false;
-            $location.path('/login');
+                // User Access token has expired 
+                delete $window.localStorage.token;
+                $rootScope.currentUser = null;
+                $rootScope.signedin = false;
+                $location.path('/login');
+          } else if (response.status === 404) {
+                console.log('fucking ' + response);
+                $location.path('/');
           }
           return $q.reject(response);
         }

@@ -7,7 +7,7 @@
               })
               .then(function(response){
                      if (response.status == "200") {
-                            $scope.user = response.data.data;
+                            $scope.useri = response.data.data;
                      };
               }, function(response){
                      alert('your request couldn\'t be proceed, sorry !');

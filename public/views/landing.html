@@ -24,7 +24,7 @@
 .data-holder {
   padding-right: 20%;
   padding-left: 10px;
-  padding-top: 200px;
+  padding-top: 100px;
   width: 100%;
   margin-right: auto;
   margin-left: auto;
@@ -538,6 +538,42 @@ input.form-button.light[type="submit"]:hover, button.form-button.light:hover, in
   height: 100%;
   max-height: 100%;
 }
+
+section article p {
+  font-size: 12px !important;
+}
+
+.c-homeIntro2__footer {
+    color: 
+    #333;
+    height: 60px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 104;
+    padding: 20px 0;
+    text-align: center;
+
+}
+.c-homeIntro2__footerInner {
+    position: relative;
+}
+.u-bold, .u-boldMedium {
+    font-weight: 500;
+    font-size: 22px;
+}
+.c-homeIntro2__footerLink {
+    color: currentColor;
+    border-bottom: 1px dashed #333;
+    cursor: pointer;
+}
+#secure-payment {
+  position: relative;
+}
+
+
+
 </style>
 <div ng-include src="'views/navbar.html'"></div>
 <section>
@@ -545,111 +581,242 @@ input.form-button.light[type="submit"]:hover, button.form-button.light:hover, in
       <div class="landIntro">
         <div class="container">
           <div class="data-holder">
-            <h1>دسترسی آسان و نامحدود شما</h1>
+            <h1>دسترسی امن به حرفه ای ترین مترجمین</h1>
             <!-- <h1>به بهترین <span class="super-bold">[</span>برنامه نویس های وب<span class="super-bold">]</span> ایران</h1> -->
-            <h1>به حرفه ای ترین مترجمین ایران</h1>
-              <a data-animation="am-fade-and-scale" data-placement="center" class="contribute-btn" href="/signup">
-          همین امروز بیا شروع کنیم !
-              </a>
+              <a class="button-secondary white" ng-click="gotohiw()">سفارش ترجمه دارید ؟
+        <!-- <span style="font-size:70%">
+                (رایگان)
+              </span> -->
+        </a>
+        <a class="button-secondary white"   href="/signup">+ ثبت پروفایل
+        <span style="font-size:70%">
+                (مترجمین)
+              </span>
+        </a>
+              
+
           </div>
         </div>
+        <div class="_19Tjs5Z-">
+   <button class="_2ywTGczr _3iQshJXW"></button>
+   <div class="OupXp6Gx">
+      <div class="_9qc3kKnu sb5yIdq8 _3alamt95 _1aERCO7t _39GOhAJw" ng-repeat="user in users | limitTo:10">
+         <a class="oYfE6Xrf" ng-click="setFreelancer(user._id)">
+            <img ng-src="{{user.image || 'https://bs-uploads.toptal.io/blackfish-uploads/components/image/content/file_file/file/57733/hero_section_small-71def495ed4653ba2bb713e7211f7506.jpg'}}"  alt="" class="_13TWm89r ls-is-cached lazyloaded" width="100%"><span class="XwLDZPC1"></span>
+         </a>
+         <div class="_25TfQgrH">
+            <a ng-click="setFreelancer(user._id)" class="_2c9SYlj- _23yTT71X">{{user.fullname}}</a>
+            <p class="_27Qy9QKP _1Tb3uueM">مترجم {{user.level}}</p>
+            <p class="_27Qy9QKP _1Tb3uueM">زمینه‌ : {{user.category}}</p>
+         </div>
       </div>
-    </section>
-    <section id="platform" style="">
-      <div class="container">
-        <div class="col-md-6 col-sm-12" style="padding-bottom:40px;">
-          <h1>Stay Productive, Wherever You Are</h1>
-          <p>Working with coworkers, customers and partners has never been simpler. With Box, not only can you securely share files, you can also create, edit and review documents with others in real-time from anywhere, on any device.
-
-From simplifying how you manage your content to empowering global teams, Box helps you work smarter and faster than ever before. </p>
-        <a>READ MORE</a>
-        </div>
-        <div class="col-md-6 col-sm-12">
-          <img style="" ng-src="https://www.box.com/sites/default/files/styles/module_31_mobile_x1/public/2016-05/home_mod1_0.jpg?itok=FqU1YEed"></img>
-        </div>
+   </div>
+</div>
       </div>
     </section>
     <section id="secure-payment">
-      <div class="container">
-        <div class="col-md-6 col-sm-12">
-          <img style="" ng-src="https://www.box.com/sites/default/files/styles/module_31_mobile_x1/public/2016-05/shield_1.png?itok=kEa2UKS9"></img>
+      <div class="c-homeIntro2__footer">
+        <div class="c-homeIntro2__footerInner">
+          <a class="c-homeIntro2__footerLink u-bold">
+          مشاهده لیست کامل مترجمین
+          </a>
         </div>
-        <div class="col-md-6 col-sm-12">
-          <h1>Security You Can Trust</h1>
-          <p>Protect files wherever they go with centralized security controls and reporting, customer-managed encryption, rights management and mobile security.
-Easily implement automated policies to support data retention and eDiscovery while staying compliant with HIPAA, FINRA SEC 17a-4, PCI and more.</p>
-        <a>LEARN MORE</a>
+      </div>
+      <div class="container">
+       <!--  <div class="col-md-12 col-sm-12">
+          <img style="" ng-src="https://www.box.com/sites/default/files/styles/module_31_mobile_x1/public/2016-05/shield_1.png?itok=kEa2UKS9"></img>
+        </div> -->
+        <div class="col-md-12 col-sm-12">
+          
+
+<div class="has-top_margin" data-role="main_content">
+ <div class="layout-shadow">
+    <div class="layout-content is-white">
+       <div class="grid-row">
+          <div class="grid-row-inner">
+             <div class="resume_section resume_top-section" data-view="resumes#top-aligner">
+                <div class="resume_top-left" data-role="left_panel">
+                   <div class="resume_top-photo_wrapper"><img alt="" class="resume_top-photo" ng-src="{{useri.image || 'https://uploads.toptal.io/user/photo/198928/large_15fe7bb0fcf0114334b4fc96040c282e.jpg'}}"></div>
+                   <div class="resume_hire_block-text"><span class="resume_hire_block-availability is-green">۳۰ هزار تومان</span> ساعتی </div>
+                   <div class="resume_hire_block-text">مترجم حرفه ای</div>
+                   <div class="resume_hire_block-text">ترجمه کتاب</div>
+                </div>
+                <div class="resume_top-right" data-role="right_panel">
+                   <div class="resume_top-info">
+                      <div class="resume_top-info_name">{{useri.fullname || 'نام شما'}}</div>
+                      <div class="resume_top-info_short_description">
+                         <h1 class="resume_top-info_location" ng-click="openModal('telephone_policy');">{نمایش اطلاعات تماس}</h1>
+                         <div class="resume_top-info_since">{{useri.city || 'تهران'}} ، ایران</div>
+                      </div>
+                      <div class="resume_top-info_bio" data-role="description">
+                        {{useri.summary}}
+                      </div>
+                   </div>
+                   <div class="resume_top-tags" data-max-rows="2" data-role="tags_list" style="max-height: none;">
+                      <a class="blueLink m-0" ng-repeat="tag in useri.tags" ng-href="/browse/tag/{{tag}}">
+                                    {{tag}}
+                      </a>
+                    </div>
+                </div>
+             </div>
+          </div>
+       </div>
+       <div class="grid-row">
+          <div class="grid-row-inner">
+             <div class="resume_section for-hire_block mobile_app-hide">
+                <div class="resume_hire_block is-available">
+                   <div class="resume_hire_block-actions"><a class="button is-green_candy is-default resume_top-hire_button">استخدام کنید</a></div>
+                </div>
+             </div>
+          </div>
+       </div>
+       </div>
+       <div data-view="resumes#wrap_up"></div>
+    </div>
+ </div>
+</div>
+
+
+
+
+
+
         </div>
       </div>
     </section>
     <section id="how-it-works">
       <div class="container text-center">
         <h2 class="margin-top-80">
-          چطور کار می کند ؟ 
+          روند انجام پروژه 
         </h2>
-        <h3 style="font-size: 100%; margin-bottom:50px">
+       <!--  <h3 style="font-size: 100%; margin-bottom:50px">
           به راحتی ...
-        </h3>
+        </h3> -->
         <div class="row margin-bottom-80">
-          <div class="col-sm-4 col-lg-3 col-lg-offset-0 col-sm-offset-1">
-            <article class="text-block">
-              <header>
-                <div class="hiw-icon icon-post"></div>
-                <hr>
-              </header>
-              <h3 class="">
-              ارسال 
-              </h3>
-              <p class="text-short">
-                Post a job to tell us about your project. We'll quickly match you with the right freelancers.
-              </p>
-            </article>
-          </div>
-          <div class="col-sm-4 col-lg-3 col-lg-offset-0 col-sm-offset-1">
+          
+          <div class="col-sm-4 col-lg-4">
             <article class="text-block">
               <header>
                 <div class="hiw-icon icon-find"></div>
                 <hr>
               </header>
               <h3 class="">
-              ارسال 
+              جست و جو مترجم
               </h3>
               <p class="text-short">
-                Post a job to tell us about your project. We'll quickly match you with the right freelancers.
+                در ابتدا نسبت به ابعاد پروژه خود اقدام به جست و جو و انتخاب مترجم می کنید 
               </p>
             </article>
           </div>
-          <div class="col-sm-4 col-lg-3 col-lg-offset-0 col-sm-offset-1">
+          <div class="col-sm-4 col-lg-4">
             <article class="text-block">
               <header>
                 <div class="hiw-icon icon-communicate"></div>
                 <hr>
               </header>
               <h3 class="">
-              تبادل
+              تماس با مترجم
               </h3>
               <p class="text-short">
-                Browse profiles, reviews, and proposals then interview top candidates. Hire a favorite and begin your project.
+                از قسمت شماره تماس ، می توانید با مترجم در ارتباط باشید و پروژه را آماده شروع کردن کنید 
               </p>
             </article>
           </div>
-          <div class="col-sm-4 col-lg-3 col-lg-offset-0 col-sm-offset-1">
+          <div class="col-sm-4 col-lg-4">
             <article class="text-block">
               <header>
                 <div class="hiw-icon icon-secure-payment"></div>
                 <hr>
               </header>
               <h3 class="">
-                پرداخت امن 
+                پرداخت امن و انجام کار
               </h3>
               <p class="text-short">
-                Use the Upwork platform to chat, share files, and collaborate from your desktop or on the go.
+                هر میزان که میخواهید به صورت ساعتی مترجم را شارژ نمایید ، اما با خیال راحت بعد از تحویل کار ها و اتمام پروژه ، اقدام به آزاد سازی نمایید 
               </p>
             </article>
           </div>
         </div>
       </div>
     </section>
+
+    <!-- Subscribe section starts -->
+<!-- <section id="subscribe"  data-parallax-background class="parallax-img">
+  <div class="bg_layer"></div>
+  <div class="container">
+    <div class="row">
+      <div class="title">
+        <h2 class="text-center">عضو <span class="white_bolder">شوید</span></h2>
+        <div class="col-xs-12 text-center">
+          <p>
+          میدونید ما هر هفته <span class="white_bolder">۱بار</span>
+           سفارش 
+           <span class="white_bolder">۱مشتری</span>
+            رو با 
+            <span class="white_bolder">۱۰۰درصد</span> تخفیف انجام میدیم ؟ زودتر از بقیه مطلع بشید 
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-8 col-sm-offset-2">
+      <div class="input-sub">
+        <input placeholder="آدرس ایمیل خود را وارد کنید." type="text" class="form-control subscribe-form-control ">
+        <button class="btn subscribe-button theme_btn" type="submit">الان عضو شو</button>
+      </div>
+    </div>
+  </div>
+</section> -->
+<!-- Subscribe section ends -->
+
+
+<!-- todo: should be responsive ! -->
+<!-- Footer section starts -->
+<!-- <footer>
+  <section id="main_footer"   data-parallax-background class="parallax-img">
+    <div class="bg_layer"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-4 col-xs-12">
+          <a href="#"><h2 class="brand-logo mb30">اونیتا</h2></a>
+          <p class="mb30">
+            تخصصی ترین شبکه مترجمین آنلاین ، در سریع ترین زمان ممکن بالاترین کیفیت را از مترجمین ما بخواهید.
+          </p>
+          <div class="social_icons">
+            <a href="#">
+              <span class="fb_footer"></span>
+            </a>
+            <a href="#">
+              <span class="twt_footer"></span>
+            </a>
+            <a href="#">
+              <span class="pinit_footer"></span>
+            </a>
+            <a href="#">
+              <span class="linkedin_footer"></span>
+            </a>
+          </div>
+        </div> -->
+        <!-- <div class="col-sm-offset-4"></div>
+        <div class="col-sm-8 col-xs-12">
+          <div class="middle_footer">
+            <h4>Expert Translator ?</h4>
+            <p class="mb30">
+              Our customers are those who care about the details; the small stuff. If you genuinely want to deliver something that people love. we want you here.  We need you here. We have super ambitious goals that we think will genuinely make a difference for our customers.
+            </p>
+            <input class="form-control mb30" type="text" placeholder="Enter Email Address/Phone No.">
+            <a href="#" class="btn theme_btn">Join Us</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer_line text-center">
+      <p>تمامی حقوق متعلق به &copy; اونتا می باشد</p>
+    </div>
+  </section>
+</footer> -->
+<!-- Footer section ends -->
+
+
 
     <!-- <section id="ig">
       <div class="container">

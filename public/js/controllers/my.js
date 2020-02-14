@@ -1,11 +1,11 @@
 + function() {
   angular.module('MyApp')
-  .controller('MyCtrl', function($scope, User, $routeParams, $window, $uibModal, $http, Upload, $timeout, toaster, $interval) {
+  .controller('MyCtrl', function($scope,Auth, User, $routeParams, $window, $uibModal, $http, Upload, $timeout, toaster, $interval) {
      $scope.updateUser = function(timer){
       var timer = timer ? timer : 10;
       $timeout(function(){
         User.get({ _id: $routeParams.id }, function(info) {
-          $scope.user = info;
+          $scope.useri = info;
         }); 
       }, timer)
      };
@@ -19,7 +19,9 @@
     $scope.fileUploaded = '';
     $scope.selectedFile = [];
     $scope.response = '';
-    $scope.tab = 'activity';
+    $scope.tab = 'info';
+    $scope.levels = ['حرفه ای' , 'نیمه حرفه ای',  'آماتور'];
+    $scope.categories = ['همه', 'تخصصی', 'مقاله', 'کتاب', 'فیلم', 'محتوا'];
     $scope.tabSelector = function(tab) {
       $scope.tab = tab;
     }
@@ -57,14 +59,36 @@
           // $scope.progress = parseInt(100.0 * evt.loaded / evt.total);
       });
     };
+    $scope.update = function(useri) {
+      $http.post('api/user/', useri).then(function(data){
+        $window.location.href = '/my/' + useri._id;
+      }, function(err){
+        $window.location.href = '/my/' + useri._id;
+      })
+    }
+     $scope.transfer = function() {
+      if ($scope.urladdress) {
+        $http.post('/api/transfer', {'url': $scope.urladdress}).then(function(data){
+             setFreelancerImage(data.data.url)
+           }, function(err) {console.log(err)})
+      };
+    }
+      
+    function setFreelancerImage(url) {
+      $http.post('/api/setimage', {'url': url, 'user': $scope.user}).then(function(data){
+        $window.location.href = '/my/' + $scope.user._id
+      }, function(err){
+        console.log(err)
+      })
+    }
 
   
-    $scope.resume_add_open = function (size) {
+    $scope.tags_add_open = function (size) {
 
       var modalInstance = $uibModal.open({
         animation: $scope.animationsEnabled,
-        templateUrl: 'resume-add.html',
-        controller: 'ResumeCtrl',
+        templateUrl: 'tags-add.html',
+        controller: 'TagsCtrl',
         size: size,
         resolve: {
           user: function() {
@@ -220,6 +244,8 @@
           $scope.progress = parseInt(100.0 * evt.loaded / evt.total);
       });
     };
+   
+    
 
     $scope.reload = function() {
       $window.location.href = '/my/' + user._id;
@@ -245,6 +271,38 @@
       },
       function(response){
         alert('your resume didn\'t added successfully ! ');
+        $window.location.href = '/my/' + user._id;
+      });
+
+    };
+
+
+
+
+
+    $scope.cancel = function () {
+      $uibModalInstance.dismiss('cancel');
+    };
+
+     }).controller('TagsCtrl', function($scope, $routeParams, $window, $uibModal, $uibModalInstance, $http, user){
+    $scope.default = '';
+    $scope.tag = '';
+    $scope.add_tag = function(tag) {
+      $http({
+        url: 'api/v1/tag',
+        method: 'POST',
+        data: {
+          user: user,
+          tag: $scope.tag
+        }
+
+      })
+      .then(function(response){
+        alert('تگ با موفقیت اضافه گردید');
+        $window.location.href = '/my/' + user._id;
+      },
+      function(response){
+        alert('متاسفانه مشکلی پیش آمد');
         $window.location.href = '/my/' + user._id;
       });
 

@@ -48,7 +48,7 @@
 		margin-bottom: 40px;
 	}
 	.air-card:first-child {
-		margin-top: 0;
+		margin-top: 50px;
 	}
 	.circle-edit-button {
 		border-radius: 50%;
@@ -77,7 +77,7 @@
 		position: relative;
 	}
 	.text-muted {font-size: 80%;}
-	.profile_contact_user {
+	.profile_contact_useri {
 		float: none;
 		width: auto;
 		margin-bottom: 20px;
@@ -85,7 +85,15 @@
 	.bg_light-green {
 		background-color: rgb(24, 208, 157);
 	}
-
+	.layout-content {
+		margin-top: 80px;
+	}
+	.bold {font-size: 17px;
+font-weight: 1000;}
+.resume_top-info_since {
+	font-weight: 800;
+	font-size: 17px;
+}
 </style>
 <div ng-include src="'views/navbar.html'"></div>
 <div class="pt-nav">
@@ -106,70 +114,67 @@
 		<h1> {{error}} </h1>
 	</div>
 	<div class="container expert-profile" ng-hide="error">
-		<div class="" ng-mouseover="trigger_in();" ng-mouseleave="trigger_out();">
-			<div class="profile_upper-body col-md-12 upper-body">
-				<div class="object-align-center">
-					<img id="user-portrait" class="avatar avatar-lg expert-profile-pic" ng-src="{{user.image || 'images/ads.png'}}" ng-click="profile_image_open('lg')"/>
-					<span id="expert-name" class="">
-						<h3 style="margin-top:0"> {{user.firstName}} {{user.lastName}}</h3>
-					</span>
-				    <button class="profile_contact_user btn btn-lg btn-action btn-compound object-align-center" ng-click="update_skills()">
-				    	<span class="ion-email bg_light-green"></span>
-			    		<span class="btn-value"> ارسال درخواست همکاری </span>
-				    </button>
-				</div>
-				<div class="media-body">
-					<div class="expert-profile-skills">
-						<a class="blueLink tag" 
-						ng-repeat="tag in user.tags" 
-						ng-html="/browse/tag/{{tag}}">
+		<div class="has-top_margin" data-role="main_content">
+ <div class="layout-shadow">
+    <div class="layout-content is-white">
+       <div class="grid-row">
+          <div class="grid-row-inner">
+             <div class="resume_section resume_top-section" data-view="resumes#top-aligner">
+                <div class="resume_top-left" data-role="left_panel">
+                   <div class="resume_top-photo_wrapper"><img alt="" class="resume_top-photo" ng-src="{{useri.image || 'images/ads.png'}}"></div>
+                   <div class="resume_hire_block-text"><span class="resume_hire_block-availability"><span class="bold">{{useri.rate}}هزار تومان</span></span> ساعتی </div>
+                   <div class="resume_hire_block-text">مترجم <span class="bold">{{useri.level}}</span></div>
+                   <div class="resume_hire_block-text">ترجمه : <span class="bold">{{useri.category}}</span></div>
+                </div>
+                <div class="resume_top-right" data-role="right_panel">
+                   <div class="resume_top-info">
+                      <div class="resume_top-info_name">{{useri.fullname}}</div>
+                      <div class="resume_top-info_short_description">
+                         <h1 class="resume_top-info_location" ng-click="openModal('telephone_policy');">{نمایش اطلاعات تماس}</h1>
+                         <div class="resume_top-info_since">{{useri.city}} ، ایران</div>
+                      </div>
+                      <div class="resume_top-info_bio" data-role="description">{{useri.summary}}</div>
+                   </div>
+                   <div class="resume_top-tags" data-max-rows="2" data-role="tags_list" style="max-height: none;">
+                   	<a class="blueLink m-0" ng-repeat="tag in useri.tags" ng-href="/browse/tag/{{tag}}">
+                                    {{tag}}
+                            </a>
+                   </div>
+                </div>
+             </div>
+          </div>
+       </div>
+       <div class="grid-row">
+          <div class="grid-row-inner">
+             <div class="resume_section for-hire_block mobile_app-hide">
+                <div class="resume_hire_block is-available">
+                   <div class="resume_hire_block-actions"><a class="button is-green_candy is-default resume_top-hire_button">استخدام کنید</a></div>
+                </div>
+             </div>
+          </div>
+       </div>
+       </div>
+       <div data-view="resumes#wrap_up"></div>
+    </div>
+ </div>
+</div>
+<div class="layout has-top_margin expert-profile" data-role="main_content">
 
-							{{tag}}
-
-						</a>
-						<span class="ng-cloak" ng-hide="user.tags">
-							شما مهارتی اضافه نکره اید
-						</span>
-
-						<!-- edit button  -->
-
-						<i class="ion-plus circle-edit-button ng-cloak" 
-						ng-show="is_edit_open" 
-						ng-click="skills_edit_open('lg');">
-						</i>
-
-					</div>
-				</div>
-			</div>
 			<div class="col-md-12">
-				<div class="air-card">
+				<div class="air-card" ng-show="useri.resumes[0]">
 					<legend>
-						<span> خلاصه فعالیت ها </span>
-						<i class="ion-plus circle-edit-button ng-cloak" ng-show="is_edit_open" ng-click="summary_edit_open('lg');"></i>
-					</legend>
-					<section class="p-lg-left">
-						<p class="o-break-word o-white-space-pre-line" ng-show="user.summary">
-							{{user.summary}}
-						</p>
-						<p class="o-break-word o-white-space-pre-line ng-cloak" ng-hide="user.summary">
-							شما فعالیتی در رزومه خود اضافه نکرده اید 
-						</p>
-					</section>
-				</div>
-				<div class="air-card">
-					<legend>
-						<span> رزومه کاری </span>
+						<span> رزومه </span>
 						<span class="">
 							<i class="ion-plus circle-edit-button ng-cloak" ng-show="is_edit_open" ng-click="resume_add_open('lg');"></i>
 						</span>
 					</legend>
-					<div class="" data-ng-hide="user.resumes[0].title">
+					<div class="" data-ng-hide="useri.resumes[0].title">
 						<strong>
-							شما رزومه ای اضافه نکرده اید
+							رزومه ای وجود ندارد 
 						</strong>
 					</div>
-					<div class="" data-ng-show="user.resumes[0].title">
-						<div class="partial" data-ng-repeat="resume in user.resumes track by $index">
+					<div class="" data-ng-show="useri.resumes[0].title">
+						<div class="partial" data-ng-repeat="resume in useri.resumes track by $index">
 							<span class="col-md-9">
 								<strong>
 									{{resume.title}}
@@ -191,20 +196,20 @@
 						</div>
 					</div>
 				</div>
-				<div class="air-card">
+				<div class="air-card" ng-show="useri.educations[0]">
 					<legend>
 						<span> تحصیلات </span>
 						<span class="">
 							<i class="ion-plus circle-edit-button ng-cloak" ng-show="is_edit_open" ng-click="edu_add_open('lg');"></i>
 						</span>
 					</legend>
-					<div class="" data-ng-hide="user.educations[0].name">
+					<div class="" data-ng-hide="useri.educations[0].name">
 						<strong>
-							شما تحصیلاتی وارد نکرده اید
+							مدارکی وجود ندارد
 						</strong>
 					</div>
-					<div class="ng-cloak" data-ng-show="user.educations[0].name">
-						<div class="partial" data-ng-repeat="edu in user.educations track by $index">
+					<div class="ng-cloak" data-ng-show="useri.educations[0].name">
+						<div class="partial" data-ng-repeat="edu in useri.educations track by $index">
 							<span class="col-md-9">
 								<strong>
 									{{edu.name}}
@@ -222,6 +227,7 @@
 					</div>
 				</div>
 			</div>
-		</div>
-	</div>
+       </div>
+    </div>
+ </div>
 </div>

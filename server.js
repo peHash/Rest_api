@@ -23,30 +23,38 @@ var tokenSecret = 'your unique secret';
 var Schema = mongoose.Schema,
     ObjectId = Schema.ObjectId;
 var youtubeFolder = path.join(__dirname, 'public/youtube/videos');
+var download = require('image-downloader')
 
-let Promise = require('bluebird');
-const TelegramBot = require('node-telegram-bot-api');
+
+//let Promise = require('bluebird');
+//const TelegramBot = require('node-telegram-bot-api');
 const token = '430103329:AAFeFKj6WaqRpyh9CyX4ZSMtOiTEaN6UOAM';
-const bot = new TelegramBot(token, {polling: true});
-
+//const bot = new TelegramBot(token, {polling: true});
+const TrezSMSClient = require("trez-sms-client"); // Or simply `require("trez-sms-client")`, if you have installed from NPM
+const username = "paymaan912";
+const password = "peyman!!ARAK";
+const client = new TrezSMSClient(username, password);
+var Kavenegar = require('kavenegar'); 
+var api = Kavenegar.KavenegarApi({apikey: '5A7165516B5542627843636E504A4D67683964427957476C4B7661684742554C58776535506131785938773D'}); 
 
 
 var userSchema = new Schema({
 
   // _creator: {type: Number, ref: 'Course'},
-  name: { type: String, trim: true, required: true },
-  tel : {type: Number, unique: true, default: ''},
-  email: { type: String, unique: true, lowercase: true, trim: true , required: true},
+  fullname: { type: String, trim: true},
+  tel : {type: Number, default: ''},
+  cash : {type: Number, default: 0},
+  tel_verified : {type: Boolean},
+  code: {type: String},
+  city: {type: String},
+  rate: {type: String},
+  level: {type: String},
+  category: {type: String},
+  fast: {type: Boolean},
+  freelancer: {type: Boolean},
+  email: { type: String, lowercase: true, trim: true},
   image: {type: String},
   password: { type: String },
-  facebook: {
-    id: String,
-    email: String
-  },
-  google: {
-    id: String,
-    email: String
-  }, 
   bids: [{type: mongoose.Schema.Types.ObjectId,
     ref: 'Bid'}], 
   tags: [{type: String, default: ''}], 
@@ -228,7 +236,15 @@ var Article = mongoose.model('Article', articleSchema);
 
 var Post = mongoose.model('Post', postSchema);
 
-mongoose.connect('mongodb://localhost/onita');
+mongoose.connect('mongodb://localhost/onita',{useMongoClient:true});
+
+// client.manualSendCode("09121488948", "Verification Code: 595783")
+//     .then((messageId) => {
+//         console.log("Sent Message ID: " + messageId);
+//     })
+//     .catch(error => console.log(error));
+
+
 
 var app = express();
 
@@ -236,12 +252,12 @@ app.set('port', process.env.PORT || 1212);
 // app.use(logger('dev'));
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
-app.set('views', path.join(__dirname, 'public/HTML/view'));
+app.set('views', path.join(__dirname, 'public/view'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
-  extended: true
+  extended: false
 }));
-app.use(express.static(path.join(__dirname, 'public/HTML')));
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser({defer: true}));
 app.use(function (req, res, next) {
 
@@ -290,10 +306,79 @@ function createJwtToken(user) {
   return jwt.encode(payload, tokenSecret);
 }
 
+app.post('/api/transfer', ensureAuthenticated, function(req, res){
+if (req.body.url) {
+  var options = {
+  url: req.body.url,
+  dest: 'public/images'                
+}
+
+download.image(options)
+  .then(({ filename, image }) => {
+    res.send({url: filename, status: 200});
+  })
+  .catch((err) => console.error(err))
+
+}
+})
+
+app.post('/api/setimage', function(req,res){
+  if (req.body.url && req.body.user) {
+    var image = req.body.url.replace('public/','');
+    User.update({_id: req.body.user._id}, {
+    image: image
+}, function(err, affected, resp) {
+   res.send(resp)
+})
+  }
+})
 
 app.post('/api/cbpayment', function(req,res){
   res.render('edit.html', {serverData: req.body});
 })
+
+app.post('/api/user', function(req,res){
+    User.findById(req.body._id, function (err, doc) {
+    if (err) return console.log(err);
+      doc.fullname = req.body.fullname || 'نام شما';
+      doc.rate = req.body.rate || '30';
+      doc.city = req.body.city || 'تهران';
+      doc.level = req.body.level || 'حرفه ای';
+      doc.category = req.body.category || 'همه';
+      doc.fast = req.body.fast || true;
+      doc.freelancer = req.body.freelancer || false;
+      doc.save(function(err){
+        if (err) console.log(err);
+        res.send(200);
+      });
+    });
+    
+  });
+
+app.post('/api/genverification', function(req,res){
+    User.findById(req.body._id, function (err, doc) {
+    if (err) return handleError(err);
+      doc.code = req.body.code;
+      doc.save(function(err){
+        if (err) console.log(err);
+        api.Send({ message: "کد احراز هویت رو به رو را وارد کنید : " + req.body.code , sender: "1000596446" , receptor: '0'+ doc.tel });
+      });
+      res.send(200);
+    });
+    
+  });
+app.post('/api/evaluateverification', function(req,res){
+    User.findById(req.body._id, function (err, doc) {
+    if (err) return handleError(err);
+    if (req.body.code == doc.code) {
+      doc.tel_verified = true
+    }
+      doc.save(function(err){
+        if (err) console.log(err);
+      });
+    });
+    res.send(200);
+  });
 
 
 app.post('/api/payment', function(req,res){
@@ -450,35 +535,52 @@ app.get('/api/posts', function(req,res,next){
   });
 });
 
+
+app.get('/api/v1/users', function(req,res,next){
+  var query = User.find({}).exec(function(err, users) {  
+    if (err) return next(err);
+    res.send(users);
+  });
+});
+
 app.post('/auth/signup', function(req, res, next) {
   var user = new User({
-    name: req.body.name,
     tel: req.body.tel,
-    email: req.body.email.toLowerCase(),
-    password: req.body.password
+    password: req.body.password, 
+    freelancer: req.body.freelancer
   });
   user.save(function(err) {
-    if (err) return next(err);
+    if (err) console.log(err);
+   
     res.send(200);
   });
 });
 
 app.post('/auth/login', function(req, res, next) {
-  User.findOne({ email: req.body.email.toLowerCase() }, function(err, user) {
+  User.findOne({ tel: req.body.tel }, function(err, user) {
+    
     // if (!user) return res.send(401, 'User does not exist');
     if (!user) return res.status(401).send('User does not exist');
     user.comparePassword(req.body.password, function(err, isMatch) {
       if (err) return res.status(401).send('something went WRONG, try again ;)')
-      if (!isMatch) return res.status(401).send('Invalid email and/or password');
+      if (!isMatch) return res.status(401).send('Invalid tel and/or password');
       var cpUser = {
         _id: user._id,
-        email: user.email,
+        tel: user.tel,
         password: user.password
       };
       var token = createJwtToken(cpUser);
       res.status(200).send({ token: token });
     });
   });
+});
+
+app.post('/auth/getinfo', function(req, res, next) {
+  User.findById(req.body.id).exec(function (err, info) {
+    if (err) console.log(err);
+    res.send(info);
+  });
+
 });
 
 
@@ -703,14 +805,10 @@ app.get('/api/v1/user', function(req, res, next){
   });
 });
 app.get('/api/v1/user/:id', ensureAuthenticated, function(req, res, next) {
-  if (req.user._id == req.params.id) {
     User.findById(req.params.id, function(err, user){
       if (err) return next(err);
       res.send(user);
   });
-  } else {
-    res.send(400, { message: "You cannot access to this page !" });
-  }
 });
 app.get('/api/v1/inbox/:id', ensureAuthenticated, function(req, res, next){
   User.findById(req.params.id, function(err, user){
@@ -757,6 +855,20 @@ app.post('/api/v1/summary', ensureAuthenticated, function(req, res, next){
     });
     res.status(200).end();
 });
+
+
+app.post('/api/v1/tag', ensureAuthenticated , function(req, res, next) {
+  console.log('reached')
+  User.update({_id: req.body.user._id}, {
+    $push: {
+      tags: req.body.tag
+    }
+  }, {upsert: true}, function(err){
+        if (err) console.log(err);
+      });
+  res.status(200).end();
+});
+
 
 app.post('/api/v1/resume', ensureAuthenticated , function(req, res, next) {
   User.update({_id: req.body.user._id}, {
