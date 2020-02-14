@@ -1,0 +1,33 @@
+<style>
+.form-group p {direction: rtl}
+.cancel {
+  position: absolute;
+top: -60px;
+}
+.cancel:hover {
+  cursor: pointer;
+}
+</style>
+<toaster-container toaster-options="{'time-out': 2000, 'close-button':true, 'animation-class': 'toast-top-center'}"></toaster-container>
+<section id="payment">
+  <div class="row">
+      <div class="title">
+        <h2 class="text-center"> <span class="theme_bolder"ng-show="!currentUser"> ثبت نام کنید</span></h2>
+          <h2 class="text-center"> <span class="theme_bolder"ng-show="currentUser && !user.tel_verified"> تایید شماره موبایل</span></h2>
+          <h2 class="text-center" style="direction: ltr;"> <span class="theme_bolder"ng-show="currentUser && user.tel_verified"> ۰۹۰۳ ۳۹۰ ۸ ۹۳۰</span></h2>
+          <div class="text-center" style="padding: 0 50px;">
+              <p>
+                  <span ng-show="!currentUser">برای مشاهده اطلاعات تماس می بایست ابتدا ثبت نام کنید  </span>
+      <span ng-show="currentUser && !user.tel_verified"> از قسمت کاربری شماره موبایل خود را تایید فرمایید </span>
+      <span ng-show="currentUser && user.tel_verified">تماس بگیرید و با مترجم مورد نظرتان کار کنید </span>
+              </p>
+          </div>
+      </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-8 col-sm-offset-2" style="direction: ltr;">
+
+    </div>
+  </div>
+</section>
+<span class="cancel" ng-click="dismiss()">بستن X</span>

@@ -1,0 +1,482 @@
+<style>
+.top-freelancers{
+    position: absolute;
+    top: 130px;
+    right: 0;
+    left: 0;
+    width: 100%;
+}
+.o-box {
+    background-color: 
+#fff;
+border: 1px solid
+    #d0d0d0;
+    margin-bottom: 20px;
+    position: relative;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+}
+.c-topCompanies__list {
+    list-style: none;
+}
+.o-listView__itemWrap.o-listView__itemWrap {
+    padding: 20px;
+    display: block;
+}
+.c-topCompanies__each {
+    padding: 0 !important;
+    overflow: hidden;
+}
+.o-listView__itemWrap {
+    cursor: default;
+}
+.c-topCompanies__wrapper {
+    display: block;
+    position: relative;
+    overflow: visible;
+    z-index: 2;
+    height: 80px;
+    padding: 0 20px;
+    border-top: 1px solid 
+    #e0e0e0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    outline: none !important;
+}
+.c-topCompanies__each.js-opened .c-topCompanies__wrapper {
+    -webkit-box-shadow: 0 4px 6px -4px rgba(0,0,0,.5);
+    box-shadow: 0 4px 6px -4px 
+rgba(0,0,0,.5);
+background-color:
+    rgba(0,0,0,.05);
+}
+.c-topCompanies__counter {
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    -webkit-border-radius: 500px;
+    border-radius: 500px;
+    border: 1px dashed 
+#bbb;
+margin: 0 15px;
+    margin-top: 0px;
+    margin-right: 15px;
+margin-right: 0;
+font-size: 18px;
+color:
+    #999;
+}
+.c-topCompanies__counter, .c-topCompanies__name {
+    font-weight: 500;
+    color: #555;
+}
+.c-topCompanies__counter, .c-topCompanies__logo, .c-topCompanies__name, .c-topCompanies__rate {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+}
+.c-topCompanies__each.js-opened .c-topCompanies__logo {
+    -webkit-transform: translateY(50px);
+    -ms-transform: translateY(50px);
+    transform: translateY(50px);
+    width: 100px;
+    height: 100px;
+    border: 5px solid 
+#fff;
+-webkit-box-shadow: 0 0 0 1px #d9d9d9;
+box-shadow: 0 0 0 1px
+    #d9d9d9;
+}
+.c-topCompanies__logo {
+    position: absolute;
+    top: 15px;
+    width: 50px;
+    height: 50px;
+    overflow: hidden;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    background-color: 
+    #eee;
+    -webkit-transform: translateY(0);
+    -ms-transform: translateY(0);
+    transform: translateY(0);
+    -webkit-transition: all .3s ease;
+    transition: all .3s ease;
+        transition-property: all;
+    -webkit-transition-property: width,height,-webkit-transform;
+    transition-property: width,height,-webkit-transform;
+    transition-property: transform,width,height;
+    transition-property: transform,width,height,-webkit-transform;
+}
+.c-topCompanies__logo, .c-topCompanies__name, .c-topCompanies__rate {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 80px;
+}
+.c-topCompanies__each.js-opened .c-topCompanies__name {
+    -webkit-transform: translateX(70px);
+    -ms-transform: translateX(70px);
+    transform: translateX(70px);
+    padding-left: 100px;
+}
+.c-topCompanies__name {
+    position: absolute;
+    top: -10px;
+    right: 150px;
+    width: 100%;
+    -webkit-transform: translateX(0);
+    -ms-transform: translateX(0);
+    transform: translateX(0);
+    padding-left: 300px;
+    font-size: 16px;
+    font-weight: 700;
+    -webkit-transition: -webkit-transform .3s ease;
+    transition: -webkit-transform .3s ease;
+    transition: transform .3s ease;
+    transition: transform .3s ease,-webkit-transform .3s ease;
+}
+.c-topCompanies__name {
+    font-weight: 500;
+    color: 
+    #555;
+}
+ .c-topCompanies__rate {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 80px;
+}
+.c-topCompanies__leftBlock {
+    position: absolute;
+    top: 0;
+    left: 10px;
+    height: 100%;
+}
+.c-topCompanies__counter, .c-topCompanies__logo, .c-topCompanies__rate {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+ 
+}
+.c-topCompanies__each.js-opened .c-topCompanies__logo {
+    margin: 0;
+padding: 0;
+    -webkit-transform: translateY(50px);
+    -ms-transform: translateY(50px);
+    transform: translateY(50px);
+    width: 100px;
+    height: 100px;
+    border: 5px solid 
+#fff;
+-webkit-box-shadow: 0 0 0 1px #d9d9d9;
+box-shadow: 0 0 0 1px
+    #d9d9d9;
+}
+.c-topCompanies__each.js-opened .c-topCompanies__texts, .c-topCompanies__each.js-opened .c-topCompanies__workSpaceWrapper {
+    opacity: 1;
+}
+.c-topCompanies__texts {
+    position: relative;
+    height: 100%;
+    padding: 20px;
+        padding-left: 20px;
+    padding-left: 0;
+    opacity: 0;
+    -webkit-transition: opacity .3s linear;
+    transition: opacity .3s linear;
+        transition-delay: 0s;
+    -webkit-transition-delay: .3s;
+    transition-delay: .3s;
+}
+.c-btn--sm.c-btn--sm {
+    font-size: 12px;
+    line-height: 30px;
+    height: 30px;
+    padding: 0 100px;
+    margin-right: 220px;
+    margin-bottom: 20px;
+}
+.c-topCompanies__goToCompany {
+    margin-right: 180px;
+}
+.c-btn--semiFlat, .c-btn--semiFlat:active {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+.c-btn--semiFlat {
+    border-bottom: 1px solid 
+    rgba(0,0,0,.1);
+}
+.c-btn--primary {
+    background-color: 
+#1abc9c;
+color:
+    hsla(0,0%,100%,.95);
+    -webkit-box-shadow: 0 -3px 0 0 #12876f inset;
+    box-shadow: inset 0 -3px 0 0 #12876f;
+    height: 50px;
+}
+.c-btn, .c-btn:focus, .c-btn:hover {
+    text-decoration: none;
+    outline: none;
+}
+.c-btn {
+    display: inline-block;
+    background-color: #f5f5f5;
+    padding: 18px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 13px;
+    text-align: center;
+    color: #444;
+    cursor: pointer;
+    -webkit-box-shadow: 0 -3px 0 0 #d0d0d0 inset;
+    box-shadow: inset 0 -3px 0 0 #d0d0d0;
+    -webkit-border-radius: 3px 3px 3px 3px;
+    border-radius: 3px 3px 3px 3px;
+    border: none;
+        border-bottom-color: currentcolor;
+        border-bottom-style: none;
+        border-bottom-width: medium;
+    white-space: nowrap;
+    background-image: none;
+    -webkit-transform: translateY(0);
+    -ms-transform: translateY(0);
+    transform: translateY(0);
+}
+.c-topCompanies__metas {
+    margin-top: 50px;
+}
+.c-topCompanies__metas, .c-topCompanies__parameters {
+    font-size: 13px;
+    padding: 15px 0;
+    border-bottom: 1px dashed 
+    #e0e0e0;
+}
+.c-topCompanies__parameters {
+    padding-top: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+.c-topCompanies__parameters {
+    font-size: 13px;
+    padding: 15px 0;
+        padding-top: 15px;
+        padding-bottom: 15px;
+    border-bottom: 1px dashed #e0e0e0;
+}
+.c-topCompanies__each.js-opened .c-topCompanies__workSpaceWrapper {
+    opacity: 1;
+}
+.u-noPadding {
+    padding: 0 !important;
+}
+.c-topCompanies__workSpaceWrapper {
+    opacity: 0;
+    -webkit-transition: opacity .3s linear;
+    transition: opacity .3s linear;
+        transition-delay: 0s;
+    -webkit-transition-delay: .3s;
+    transition-delay: .3s;
+}
+.c-topCompanies__workSpace {
+    position: relative;
+    min-height: 150px;
+    max-height: 300px;
+    margin: 20px;
+    overflow: hidden;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    background-color: 
+    #ccc;
+}
+.c-topCompanies__workSpaceImage {
+    display: block;
+    width: 100%;
+}
+.c-topCompanies__workSpaceImageAlt {
+    position: absolute;
+    overflow: hidden;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0;
+    padding: 15px;
+    color: 
+#fff;
+background-color:
+    rgba(0,0,0,.5);
+    font-size: 12px;
+}
+.c-topCompanies__metasItem:first-child {
+    padding-right: 0;
+}
+.c-topCompanies__metasItem {
+    padding: 0 7px;
+        padding-right: 7px;
+    font-size: 12px;
+    color: 
+#444;
+border-left: 1px solid
+    #e0e0e0;
+}
+.c-topCompanies__metasItem {
+    padding: 0 7px;
+    font-size: 12px;
+    color: 
+#444;
+border-left: 1px solid
+    #e0e0e0;
+}
+.c-topCompanies__metasItem:last-child {
+    border-left: none;
+}
+
+ .c-btn--primary {
+    background-color: 
+#1dd3af;
+color:
+    #fff;
+}
+
+.c-topCompanies__each.js-opened .c-topCompanies__rate {
+    max-width: 150px;
+    opacity: 1;
+}
+.c-topCompanies__rate {
+    margin-left: 30px;
+    font-size: 22px;
+    font-weight: bolder;
+    color:#f9a60b;
+}
+.o-box {
+    width: 1100px;
+}
+.c-topCompanies__workSpaceWrapper{
+    padding-top: 20px;
+}
+.bold {
+    font-size: 16px;
+    font-weight: 1000;}
+.resume_top-photo_wrapper {
+    padding-top: 0!important;
+    width: 150px;
+    height: 150px;
+    padding-top: 63.3%;
+    -webkit-clip-path: polygon(0 0,100% 0,100% 100%,20px 100%,0 calc(100% - 20px));
+    clip-path: polygon(0 0,100% 0,100% 100%,20px 100%,0 calc(100% - 20px));
+    overflow: hidden;
+    position: relative;
+    border-radius: 4px;
+    padding-top: 0;
+
+}
+
+.resume_top-left {
+    width: 200px;
+}
+.c-topCompanies__name {
+font-size: 18px;
+
+font-weight: 1000;
+
+color:
+#2196F3;
+}
+
+
+
+
+
+</style>
+<div ng-include src="'views/navbar.html'"></div>
+<div class="container top-freelancers" ng-hide="error">
+    <div class="">
+        <div class="col-md-12 p-0 m-0">
+            <div class="c-topCompanies o-box">
+    <ul class="c-topCompanies__list">
+        
+        <li class="c-topCompanies__each o-listView__itemWrap js-opened" ng-repeat="user in users | filter:{ freelancer: 'true' } track by $index">
+            <a href="#" class="c-topCompanies__wrapper u-clearFix">
+                <span class="c-topCompanies__counter">
+{{$index + 1}}
+</span>
+<div class="resume_top-left">
+                <div class="resume_top-photo_wrapper">
+                    <img ng-src="{{user.image || 'images/ads.png'}}" class="resume_top-photo">
+                </div>
+            </div>
+                <h2 class="c-topCompanies__name">
+{{user.fullname}}
+</h2>
+                <div class="c-topCompanies__leftBlock">
+                    <span class="c-topCompanies__rate">
+{{user.rank || '۰.۰'}}
+</span>
+                </div>
+            </a>
+            <div class="c-topCompanies__more u-clearFix">
+                <div class="c-topCompanies__texts col-md-6 col-sm-6 col-xs-12">
+                    <a target="_blank" style="background-color: #2196F3" class="c-topCompanies__goToCompany c-btn c-btn--primary c-btn--semiFlat c-btn--sm" ng-href="/profile/{{user._id}}">
+مشاهده پروفایل مترجم   
+</a>
+<a target="_blank" class="c-topCompanies__goToCompany c-btn c-btn--primary c-btn--semiFlat c-btn--sm" style="background-color: #666" ng-click="openModal('telephone_policy');">
+مشاهده اطلاعات تماس 
+</a>
+                    <div class="c-topCompanies__metas">
+                        <span class="c-topCompanies__metasItem">
+مترجم <span class="bold">{{user.level || 'آماتور'}}</span>
+</span>
+                        <span class="c-topCompanies__metasItem">
+ساعتی <span class="bold">{{user.rate || '۰'}} هزار تومان</span>
+</span>
+                        <span class="c-topCompanies__metasItem">
+<a target="_blank">
+۲۰ کار موفق
+</a>
+</span>
+                    </div>
+                    <div class="c-topCompanies__parameters">
+                        <span class="c-topCompanies__parameter c-topCompanies__parameter--one">
+<i class="c-topCompanies__parameterValue">
+۱۰
+</i>
+محبوبیت میان کارجویان
+</span>
+                        <span class="c-topCompanies__parameter c-topCompanies__parameter--one
+                                            ">
+<i class="c-topCompanies__parameterValue">
+۱۰
+</i>
+تعدد و تنوع فرصت‌های شغلی
+</span>
+                        <span class="c-topCompanies__parameter c-topCompanies__parameter--one">
+<i class="c-topCompanies__parameterValue">
+۱۰
+</i>
+بررسی رزومه‌های دریافتی
+</span>
+                    </div>
+                </div>
+                <div class="c-topCompanies__workSpaceWrapper col-md-6 col-sm-6 col-xs-12">
+                                            <p>
+                           {{user.summary}}
+                        </p>
+                        <a class="blueLink m-0" ng-repeat="tag in user.tags | limitTo:12" ng-href="/browse/tag/{{tag}}">
+                                    {{tag}}
+                            </a>
+                    <!-- <div class="c-topCompanies__workSpace">
+
+                    </div> -->
+                    
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>           
+       </div>
+    </div>
+</div>
+
