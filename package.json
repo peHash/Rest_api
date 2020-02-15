@@ -37,7 +37,7 @@
     "image-downloader": "^3.5.0",
     "ip": "^0.3.3",
     "jalaali-js": "^0.2.0",
-    "jwt-simple": "^0.2.0",
+    "jwt-simple": "^0.5.3",
     "kavenegar": "^1.1.4",
     "lodash": "^2.4.1",
     "method-override": "^1.0.0",
