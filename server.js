@@ -248,7 +248,7 @@ mongoose.connect('mongodb://localhost/onita',{useMongoClient:true});
 
 var app = express();
 
-app.set('port', process.env.PORT || 1212);
+app.set('port', process.env.PORT || 1313);
 // app.use(logger('dev'));
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
@@ -262,7 +262,7 @@ app.use(bodyParser({defer: true}));
 app.use(function (req, res, next) {
 
     // Website you wish to allow to connect
-    res.setHeader('Access-Control-Allow-Origin', 'http://onita.ir');
+    res.setHeader('Access-Control-Allow-Origin', 'http://gigakar.ir');
 
     // Request methods you wish to allow
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
@@ -314,11 +314,11 @@ if (req.body.url) {
 }
 
 download.image(options)
-  .then(function(filename) {
+  .then(({ filename, image }) => {
     res.send({url: filename, status: 200});
   })
   .catch((err) => console.error(err))
-
+ 
 }
 })
 
