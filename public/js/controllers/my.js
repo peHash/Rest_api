@@ -69,7 +69,7 @@
      $scope.transfer = function() {
       if ($scope.urladdress) {
         $http.post('/api/transfer', {'url': $scope.urladdress}).then(function(data){
-             setFreelancerImage(data.data.url)
+             setFreelancerImage(data.url)
            }, function(err) {console.log(err)})
       };
     }
