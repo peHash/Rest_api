@@ -310,7 +310,7 @@ app.post('/api/transfer', ensureAuthenticated, function(req, res){
 if (req.body.url) {
   var options = {
   url: req.body.url,
-  dest: 'public/images'                
+  dest: 'public/images/' + Math.floor(100000 + Math.random() * 900000).toString() + '.jpg';                
 }
 
 download.image(options)
