@@ -308,9 +308,11 @@ function createJwtToken(user) {
 
 app.post('/api/transfer', ensureAuthenticated, function(req, res){
 if (req.body.url) {
+  const nameNumber = Math.floor(100000 + Math.random() * 900000).toString();
+  var name = 'public/images/' + nameNumber + '.jpg';
   var options = {
   url: req.body.url,
-  dest: 'public/images/' + Math.floor(100000 + Math.random() * 900000).toString() + '.jpg';                
+  dest: name                
 }
 
 download.image(options)
