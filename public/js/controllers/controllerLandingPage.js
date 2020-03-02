@@ -5,7 +5,7 @@
 		$scope.newsletterPlaceHolder = 'ایمیل شما اینجا ...';
 		$scope.newsletterSignUpValue = 'همین حالا ثبت کن';
 		$scope.users = Users.query();
-		$scope.useri = $scope.users;
+		$scope.useri = '';
 		$scope.setFreelancer = function(id) {
 			User.get({ _id: id }, function(info) {
                $scope.useri = info;

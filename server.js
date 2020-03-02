@@ -26,10 +26,10 @@ var youtubeFolder = path.join(__dirname, 'public/youtube/videos');
 var download = require('image-downloader')
 
 
-//let Promise = require('bluebird');
-//const TelegramBot = require('node-telegram-bot-api');
-const token = '430103329:AAFeFKj6WaqRpyh9CyX4ZSMtOiTEaN6UOAM';
-//const bot = new TelegramBot(token, {polling: true});
+// //let Promise = require('bluebird');
+// const TelegramBot = require('node-telegram-bot-api');
+// const token = '430103329:AAFeFKj6WaqRpyh9CyX4ZSMtOiTEaN6UOAM';
+// const bot = new TelegramBot(token, {polling: true});
 const TrezSMSClient = require("trez-sms-client"); // Or simply `require("trez-sms-client")`, if you have installed from NPM
 const username = "paymaan912";
 const password = "peyman!!ARAK";

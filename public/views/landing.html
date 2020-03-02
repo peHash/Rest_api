@@ -495,14 +495,14 @@ input.form-button.light[type="submit"]:hover, button.form-button.light:hover, in
   width: 140px !important;
 }
 .icon-find {
-  background: url("https://www.box.com/sites/default/files/styles/module_30_square_small_mobile_x1/public/2016-05/tier2-50_1.png?itok=Q9L8_Qo3");
+  background: url(images/search_hiw.png);
   width: 150px !important;
 }
 .icon-communicate {
-  background: url("https://www.box.com/sites/default/files/styles/module_30_square_mobile_landscape_x1/public/2016-05/tier2-62.png?itok=_4p8N9dB");
+  background: url(images/communicate_hiw.png);
 }
 .icon-secure-payment {
-  background: url("https://www.box.com/sites/default/files/styles/module_30_square_mobile_landscape_x1/public/2016-05/tier2-68.png?itok=x2ASi60k");
+  background: url(images/payment_hiw.png);
 }
 .hiw-icon {
   display: inline-block;
@@ -581,7 +581,7 @@ section article p {
       <div class="landIntro">
         <div class="container">
           <div class="data-holder">
-            <h1>دسترسی امن به حرفه ای ترین مترجمین</h1>
+            <h1>دسترسی و کار امن با حرفه ای ترین مترجمین</h1>
             <!-- <h1>به بهترین <span class="super-bold">[</span>برنامه نویس های وب<span class="super-bold">]</span> ایران</h1> -->
               <a class="button-secondary white" ng-click="gotohiw()">سفارش ترجمه دارید ؟
         <!-- <span style="font-size:70%">
@@ -614,7 +614,7 @@ section article p {
 </div>
       </div>
     </section>
-    <section id="secure-payment">
+    <section id="secure-payment"  ng-show="useri">
       <div class="c-homeIntro2__footer">
         <div class="c-homeIntro2__footerInner">
           <a class="c-homeIntro2__footerLink u-bold">
@@ -665,7 +665,7 @@ section article p {
           <div class="grid-row-inner">
              <div class="resume_section for-hire_block mobile_app-hide">
                 <div class="resume_hire_block is-available">
-                   <div class="resume_hire_block-actions"><a class="button is-green_candy is-default resume_top-hire_button">استخدام کنید</a></div>
+                   <div class="resume_hire_block-actions"><a class="button is-green_candy is-default resume_top-hire_button" ng-href="/profile/{{useri._id}}">مشاهده پروفایل</a></div>
                 </div>
              </div>
           </div>
@@ -687,7 +687,7 @@ section article p {
     <section id="how-it-works">
       <div class="container text-center">
         <h2 class="margin-top-80">
-          روند انجام پروژه 
+          نحوه کار گیگا کار
         </h2>
        <!--  <h3 style="font-size: 100%; margin-bottom:50px">
           به راحتی ...
