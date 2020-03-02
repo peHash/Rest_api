@@ -804,7 +804,7 @@ app.get('/api/v1/user', function(req, res, next){
     res.send(users);
   });
 });
-app.get('/api/v1/user/:id', ensureAuthenticated, function(req, res, next) {
+app.get('/api/v1/user/:id', function(req, res, next) {
     User.findById(req.params.id, function(err, user){
       if (err) return next(err);
       res.send(user);
