@@ -315,6 +315,7 @@ if (req.body.url) {
 
 download.image(options)
   .then(({ filename, image }) => {
+    console.log(filename)
     res.send({url: filename, status: 200});
   })
   .catch((err) => console.error(err))
@@ -329,6 +330,7 @@ app.post('/api/setimage', function(req,res){
     image: image
 }, function(err, affected, resp) {
    res.send(resp)
+   console.log(affected)
 })
   }
 })
