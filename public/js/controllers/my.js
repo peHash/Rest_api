@@ -77,7 +77,7 @@
       
     function setFreelancerImage(url) {
       $http.post('/api/setimage', {'url': url, 'user': $scope.user}).then(function(data){
-        // $window.location.href = '/my/' + $scope.user._id
+        $window.location.href = '/my/' + $scope.user._id
       }, function(err){
         console.log(err)
       })
