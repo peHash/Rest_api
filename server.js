@@ -539,6 +539,7 @@ app.get('/api/posts', function(req,res,next){
 app.get('/api/v1/users', function(req,res,next){
   var query = User.find({}).exec(function(err, users) {  
     if (err) return next(err);
+    console.log(users)
     res.send(users);
   });
 });
