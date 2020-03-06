@@ -50,7 +50,7 @@
       }).then(function (response) {
           $timeout(function () {
               $scope.result = response.data;
-              toaster.pop('success','موفقیت آمیز', 'عکس شما با موفقیت در سرود آپلود شد.');
+              toaster.pop('success','موفقیت آمیز', 'عکس شما با موفقیت آپلود شد.');
           });
       }, function (response) {
           if (response.status > 0) $scope.errorMsg = response.status 
@@ -236,7 +236,6 @@
       }).then(function (response) {
           $timeout(function () {
               $scope.result = response.data;
-              console.log(response.data);
           });
       }, function (response) {
           if (response.status > 0) $scope.errorMsg = response.status 
@@ -267,11 +266,11 @@
 
       })
       .then(function(response){
-        alert('your resume added successfully !');
+        alert('با موفقیت اضافه شد');
         $window.location.href = '/my/' + user._id;
       },
       function(response){
-        alert('your resume didn\'t added successfully ! ');
+        alert('متاسفانه مشکلی پیش آمد');
         $window.location.href = '/my/' + user._id;
       });
 
@@ -386,11 +385,11 @@
     }
   })
   .then(function(response){
-    alert('summary updated successfully !');
+    alert('با موفقیت اضافه شد');
     $window.location.href = '/my/' + user._id;
   }, 
   function(response) {
-    alert('summary didn\'t updated successfully ! Be aware !!');
+    alert('متاسفانه مشکلی پیش آمد');
     $window.location.href = '/my/' + user._id;
   }
   )};
@@ -417,11 +416,11 @@
 
       })
       .then(function(response){
-        alert('your education added successfully !');
+        alert('با موفقیت اضافه شد');
         $window.location.href = '/my/' + user._id;
       },
       function(response){
-        alert('your education didn\'t added successfully ! ');
+        alert('متاسفانه مشکلی پیش آمد');
         $window.location.href = '/my/' + user._id;
       })
 

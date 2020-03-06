@@ -7,6 +7,7 @@ var gulp = require('gulp'),
     ngAnnotate = require('gulp-ng-annotate'),
     plumber = require('gulp-plumber'),
     ngTemplateCache = require('gulp-angular-templatecache'),
+    // uglify = require('gulp-uglify'),
     plugins = {
             less: require('gulp-less'),
             rename: require('gulp-rename'),
@@ -128,21 +129,19 @@ gulp.task('templates', function () {
 //     .pipe(gulp.dest('public/stylesheets'));
 // });
 // 
-// gulp.task('compress', function() {
-//   gulp.src([
-//     'public/vendor/angular.js',
-//     'public/vendor/*.js',
-//     'public/app.js',
-//     'public/services/*.js',
-//     'public/controllers/*.js',
-//     'public/filters/*.js',
-//     'public/directives/*.js'
-//   ])
-//     .pipe(concat('app.min.js'))
-//     .pipe(ngAnnotate())
-//     .pipe(uglify())
-//     .pipe(gulp.dest('public'));
-// });
+gulp.task('compress', function() {
+  gulp.src([
+    paths.app.dist + 'app.js',
+    paths.app.dist + 'controllers.js',
+    paths.app.dist + 'directives.js',
+    paths.app.dist + 'filters.js',
+    paths.app.dist + 'services.js'
+  ])
+    .pipe(plugins.concat('app.min.js'))
+    .pipe(ngAnnotate())
+    .pipe(plugins.uglify())
+    .pipe(gulp.dest(paths.app.dist));
+});
 // 
 // gulp.task('templates', function() {
 //   gulp.src('public/views/**/*.html')
@@ -160,7 +159,7 @@ gulp.task('templates', function () {
 
 
 
-    gulp.task('default', ['templates', 'concat-js', 'launch'], function () {
+    gulp.task('default', ['templates', 'concat-js', 'compress','launch'], function () {
     gulp.watch(sources.js.controllers, ['concat-js-controllers']).on('change', reporter('running `concat-js-controllers` task'));
     gulp.watch(sources.js.directives, ['concat-js-directives']).on('change', reporter('running `concat-js-directives` task'));
     gulp.watch(sources.js.filters, ['concat-js-filters']).on('change', reporter('running `concat-js-filters` task'));

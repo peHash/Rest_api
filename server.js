@@ -306,6 +306,33 @@ function createJwtToken(user) {
   return jwt.encode(payload, tokenSecret);
 }
 
+
+app.post('/api/v1/top30', function(req, res, next){
+  // console.log('req.query = ', req.body)
+  if (req.body.fast) {
+    var query = User.find({fast: true});
+  }
+  if (req.body.rate) {
+    var query = User.find({rate: req.body.rate});
+  }
+  if (req.body.city) {
+    var query = User.find({city: req.body.city});
+  }
+  if (req.body.tag) {
+    var query = User.find({}).where('tags').in([req.body.tag]);
+  } 
+  if (req.body.tag && req.body.city) {
+    var query = User.find({city: req.body.city}).where('tags').in([req.body.tag]);
+  }
+  if (!req.body.tag && !req.body.city && !req.body.rate && !req.body.fast && !req.body.elite) {
+    var query = User.find({});
+  };
+  query.limit(30).exec(function(err, users){
+    if (err) return next(err);
+    res.send(users);
+  });
+});
+
 app.post('/api/transfer', ensureAuthenticated, function(req, res){
 if (req.body.url) {
   const nameNumber = Math.floor(100000 + Math.random() * 900000).toString();
@@ -317,7 +344,7 @@ if (req.body.url) {
 
 download.image(options)
   .then(({ filename, image }) => {
-    console.log(filename)
+    // console.log(filename)
     res.send({url: filename, status: 200});
   })
   .catch((err) => console.error(err))
@@ -332,7 +359,7 @@ app.post('/api/setimage', function(req,res){
     image: image
 }, function(err, affected, resp) {
    res.send(resp)
-   console.log(affected)
+   // console.log(affected)
 })
   }
 })
@@ -349,7 +376,7 @@ app.post('/api/user', function(req,res){
       doc.city = req.body.city || 'تهران';
       doc.level = req.body.level || 'حرفه ای';
       doc.category = req.body.category || 'همه';
-      doc.fast = req.body.fast || true;
+      doc.fast = req.body.fast || false;
       doc.freelancer = req.body.freelancer || false;
       doc.save(function(err){
         if (err) console.log(err);
@@ -389,7 +416,7 @@ app.post('/api/payment', function(req,res){
 
 // Set the headers
 var headers = {
-    'User-Agent':       'Super Onita/0.0.1',
+    'User-Agent':       'Super Gigakar/0.1.0',
     'Content-Type':     'application/x-www-form-urlencoded'
 }
 // Configure the request
@@ -543,7 +570,7 @@ app.get('/api/posts', function(req,res,next){
 app.get('/api/v1/users', function(req,res,next){
   var query = User.find({}).exec(function(err, users) {  
     if (err) return next(err);
-    console.log(users)
+    // console.log(users)
     res.send(users);
   });
 });
@@ -764,7 +791,7 @@ app.post('/api/answer', ensureAuthenticated, function(req, res, next) {
         question.save(function(err) {
             if (err) return next(err);
             res.send(200);
-            console.log(question.question[0].questionBody + ' Saved Successfully');
+            // console.log(question.question[0].questionBody + ' Saved Successfully');
         });
     });
 });
@@ -863,7 +890,7 @@ app.post('/api/v1/summary', ensureAuthenticated, function(req, res, next){
 
 
 app.post('/api/v1/tag', ensureAuthenticated , function(req, res, next) {
-  console.log('reached')
+  // console.log('reached')
   User.update({_id: req.body.user._id}, {
     $push: {
       tags: req.body.tag
@@ -905,7 +932,7 @@ app.delete('/api/v1/resume/user/:id1/resume/:id2', ensureAuthenticated, function
     });
     res.sendStatus(200);
   } else {
-    console.log('Resume delete parameter error !');
+    // console.log('Resume delete parameter error !');
     res.sendStatus(401);
   }
 });
@@ -940,7 +967,7 @@ app.delete('/api/v1/education/user/:id1/edu/:id2', ensureAuthenticated, function
     });
     res.sendStatus(200);
   } else {
-    console.log('Education delete parameter error !');
+    // console.log('Education delete parameter error !');
     res.sendStatus(401);
   }
 });
@@ -954,11 +981,11 @@ app.post('/upload' ,ensureAuthenticated, function(req, res, next) {
 
  form.parse(req, function(err, fields, files){
         // TESTING
-        console.log("file size: "+JSON.stringify(files.file.size));
-        console.log("file path: "+JSON.stringify(files.file.path));
-        console.log("file name: "+JSON.stringify(files.file.name));
-        console.log("file type: "+JSON.stringify(files.file.type));
-        console.log("astModifiedDate: "+JSON.stringify(files.file.lastModifiedDate));
+        // console.log("file size: "+JSON.stringify(files.file.size));
+        // console.log("file path: "+JSON.stringify(files.file.path));
+        // console.log("file name: "+JSON.stringify(files.file.name));
+        // console.log("file type: "+JSON.stringify(files.file.type));
+        // console.log("astModifiedDate: "+JSON.stringify(files.file.lastModifiedDate));
         // Formidable changes the name of the uploaded file
         // Rename the file to its original name
     imageRoot = './public';

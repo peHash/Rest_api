@@ -387,11 +387,73 @@
 }();
 + function() {
     angular.module('MyApp')
-    .controller('topCtrl', function($scope, Users, $location, $window) {
-		$scope.introBtn = 'بزن بریم !';
-		$scope.newsletterPlaceHolder = 'ایمیل شما اینجا ...';
-		$scope.newsletterSignUpValue = 'همین حالا ثبت کن';
-		$scope.users = Users.query();
+    .controller('topCtrl', function($scope, Users, $location, $window, $http) {
+
+		$scope.search = {
+			city : '',
+			rate : '',
+			elite: '',
+			fast: ''
+		};
+		ref();
+		
+		$scope.remove_filter = function() {
+			$scope.search = {
+			city : '',
+			rate : '',
+			elite: '',
+			fast: ''
+		};
+			ref();
+		}
+
+		$scope.setTag = function(tag) {
+			$scope.search.tag = tag;
+			ref();
+		}
+
+		$scope.$watch('search.city', function () {
+            ref();
+        });
+        $scope.$watch('search.rate', function() {
+        	ref();
+        });
+        $scope.$watch('search.elite', function(){
+        	ref();
+        });
+        $scope.$watch('search.fast', function(){
+        	ref();
+        });
+
+
+		
+
+
+
+	    function ref() {
+	      $http({
+	      url : '/api/v1/top30',
+	      method : 'POST',
+	      data : {
+	        'tag' : $scope.search.tag,
+	        'city' : $scope.search.city,
+	        'rate' : $scope.search.rate,
+	        'elite' : $scope.search.elite,
+	        'fast' : $scope.search.fast
+	      }
+	    })
+	    .then(function(response){
+	    	$scope.users = response.data;
+	    	// console.log(response)	
+	      // toaster.pop('success', 'عالی !', 'پیشنهاد شما با موفقیت ارسال گردید !');
+	      // $window.location.href = '/job/' + job._id;
+	    },
+	    function(response) {
+	      // toaster.error('درست پیش نرفت', 'مشکلی پیش آمده است ، لطفا دوباره تلاش کنید !')
+	      // $window.location.href = '/job/' + job._id;
+	    });
+	  };
+
     });  
   }();
 + function() {
@@ -809,7 +871,7 @@ $scope.dismiss = function(){
       }).then(function (response) {
           $timeout(function () {
               $scope.result = response.data;
-              toaster.pop('success','موفقیت آمیز', 'عکس شما با موفقیت در سرود آپلود شد.');
+              toaster.pop('success','موفقیت آمیز', 'عکس شما با موفقیت آپلود شد.');
           });
       }, function (response) {
           if (response.status > 0) $scope.errorMsg = response.status 
@@ -995,7 +1057,6 @@ $scope.dismiss = function(){
       }).then(function (response) {
           $timeout(function () {
               $scope.result = response.data;
-              console.log(response.data);
           });
       }, function (response) {
           if (response.status > 0) $scope.errorMsg = response.status 
@@ -1026,11 +1087,11 @@ $scope.dismiss = function(){
 
       })
       .then(function(response){
-        alert('your resume added successfully !');
+        alert('با موفقیت اضافه شد');
         $window.location.href = '/my/' + user._id;
       },
       function(response){
-        alert('your resume didn\'t added successfully ! ');
+        alert('متاسفانه مشکلی پیش آمد');
         $window.location.href = '/my/' + user._id;
       });
 
@@ -1145,11 +1206,11 @@ $scope.dismiss = function(){
     }
   })
   .then(function(response){
-    alert('summary updated successfully !');
+    alert('با موفقیت اضافه شد');
     $window.location.href = '/my/' + user._id;
   }, 
   function(response) {
-    alert('summary didn\'t updated successfully ! Be aware !!');
+    alert('متاسفانه مشکلی پیش آمد');
     $window.location.href = '/my/' + user._id;
   }
   )};
@@ -1176,11 +1237,11 @@ $scope.dismiss = function(){
 
       })
       .then(function(response){
-        alert('your education added successfully !');
+        alert('با موفقیت اضافه شد');
         $window.location.href = '/my/' + user._id;
       },
       function(response){
-        alert('your education didn\'t added successfully ! ');
+        alert('متاسفانه مشکلی پیش آمد');
         $window.location.href = '/my/' + user._id;
       })
 

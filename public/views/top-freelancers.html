@@ -352,14 +352,15 @@ color:
     color:#f9a60b;
 }
 .o-box {
-    width: 1100px;
+    
 }
 .c-topCompanies__workSpaceWrapper{
     padding-top: 20px;
 }
 .bold {
     font-size: 16px;
-    font-weight: 1000;}
+
+}
 .resume_top-photo_wrapper {
     padding-top: 0!important;
     width: 150px;
@@ -385,98 +386,362 @@ font-weight: 1000;
 color:
 #2196F3;
 }
+.ui.accordion .title:not(.ui) {
+
+    padding: .5em 0;
+        padding-top: 0.5em;
+        padding-bottom: 0.5em;
+    font-family: IRANSansWeb,Arial,Helvetica,sans-serif;
+    font-size: 1em;
+    color: 
+
+    rgba(0,0,0,.87);
+
+}
+.browse-accordion__title:first-child {
+
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+
+}
+.ui.accordion:not(.styled) .title ~ .content:not(.ui) {
+
+    margin: "";
+    padding: .5em 0 1em;
+
+}
+.filter-category-list {
+
+    margin: .175rem 0 .4375rem;
+    list-style: none;
+    padding: 0;
+    font-weight: 400;
+    color: 
+
+    #424242;
+
+}
+.filter-category-list__item {
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: 400;
+
+}
+.filter-category-list__item-link {
+
+    color: inherit;
+    display: block;
+
+}
+.filter-category-list__item-field {
+
+    padding: 8px 0;
+
+}
+.filter-category-list__item {
+
+    font-weight: 400;
+
+}
+
+.filter-category-list__item a:hover {
+    color: #2196F3;
+}
+
 
 
 
 
 
 </style>
+
+
+
+
 <div ng-include src="'views/navbar.html'"></div>
 <div class="container top-freelancers" ng-hide="error">
-    <div class="">
-        <div class="col-md-12 p-0 m-0">
-            <div class="c-topCompanies o-box">
-    <ul class="c-topCompanies__list">
-        
-        <li class="c-topCompanies__each o-listView__itemWrap js-opened" ng-repeat="user in users | filter:{ freelancer: 'true' } track by $index">
-            <a href="#" class="c-topCompanies__wrapper u-clearFix">
-                <span class="c-topCompanies__counter">
-{{$index + 1}}
-</span>
-<div class="resume_top-left">
-                <div class="resume_top-photo_wrapper">
-                    <img ng-src="{{user.image || 'images/ads.png'}}" class="resume_top-photo">
+<!-- <header class="browse__header">
+        <div class="col-xs-12 col-lg-12 col-xl-8 p-none search-bar">
+            <div class="col-md-3 p-none d-xs-none d-lg-block category-dropdown">
+                <button type="button" class="col-md-12 p-none category-dropdown__menu">
+                    <div class="category-dropdown__header">
+                        <div class="category-dropdown__title">همهٔ آگهی‌ها</div><i aria-hidden="true" class="angle down icon category-dropdown__icon"></i></div>
+                </button>
+                <div class="p-none category-dropdown__list">
+                    <div class="p-none category-dropdown__items">
+                        <button type="button" class="category-button category-dropdown__item">همهٔ آگهی‌ها</button>
+                        <button type="button" class="category-button category-dropdown__item">املاک<i aria-hidden="true" class="angle left icon category-dropdown__item-icon"></i></button>
+                        <button type="button" class="category-button category-dropdown__item">وسایل نقلیه<i aria-hidden="true" class="angle left icon category-dropdown__item-icon"></i></button>
+                        <button type="button" class="category-button category-dropdown__item">لوازم الکترونیکی<i aria-hidden="true" class="angle left icon category-dropdown__item-icon"></i></button>
+                        <button type="button" class="category-button category-dropdown__item">مربوط به خانه<i aria-hidden="true" class="angle left icon category-dropdown__item-icon"></i></button>
+                        <button type="button" class="category-button category-dropdown__item">خدمات<i aria-hidden="true" class="angle left icon category-dropdown__item-icon"></i></button>
+                        <button type="button" class="category-button category-dropdown__item">وسایل شخصی<i aria-hidden="true" class="angle left icon category-dropdown__item-icon"></i></button>
+                        <button type="button" class="category-button category-dropdown__item">سرگرمی و فراغت<i aria-hidden="true" class="angle left icon category-dropdown__item-icon"></i></button>
+                        <button type="button" class="category-button category-dropdown__item">اجتماعی<i aria-hidden="true" class="angle left icon category-dropdown__item-icon"></i></button>
+                        <button type="button" class="category-button category-dropdown__item">برای کسب و کار<i aria-hidden="true" class="angle left icon category-dropdown__item-icon"></i></button>
+                        <button type="button" class="category-button category-dropdown__item">استخدام و کاریابی<i aria-hidden="true" class="angle left icon category-dropdown__item-icon"></i></button>
+                    </div>
                 </div>
             </div>
-                <h2 class="c-topCompanies__name">
+            <div class="col-md-12 col-lg-9 p-none search-bar-box css-2b097c-container">
+                <div class="search-bar-box__control css-yk16xz-control">
+                    <div class="search-bar-box__value-container css-1hwfws3">
+                        <div class="search-bar-box__placeholder css-1wa3eu0-placeholder">جستجو در همهٔ آگهی‌ها</div>
+                        <div class="css-1g6gooi">
+                            <div class="search-bar-box__input" style="display:inline-block">
+                                <input type="text" autocapitalize="none" autocomplete="off" autocorrect="off" id="react-select-search-bar-input" spellcheck="false" tabindex="0" value="" aria-autocomplete="list" style="box-sizing: content-box; width: 2px; background: rgba(0, 0, 0, 0) none repeat scroll 0px center; border: 0px none; font-size: inherit; opacity: 1; outline: currentcolor none 0px; padding: 0px; color: inherit;">
+                                <div style="position: absolute; top: 0px; left: 0px; visibility: hidden; height: 0px; overflow: scroll; white-space: pre; font-size: 14px; font-family: IRANSansWeb, Arial, Helvetica, sans-serif; font-weight: 400; font-style: normal; letter-spacing: normal; text-transform: none;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="search-bar-box__indicators css-1wy0on6"></div>
+                </div>
+            </div>
+        </div>
+        <div class="d-xs-none d-lg-block header-suggestions">
+            <div class="header-suggestions__bar"><a class="chip" href="/s/tehran/car">خودرو سواری</a><a class="chip" href="/s/tehran/buy-residential">فروش مسکونی</a><a class="chip" href="/s/tehran/rent-residential">اجاره مسکونی</a><a class="chip" href="/s/tehran/mobile-phones">موبایل</a><a class="chip" href="/s/tehran/sofa-armchair">مبلمان</a><a class="chip" href="/s/tehran/pets-animals">حیوانات</a><a class="chip" href="/s/tehran/personal-goods">وسایل شخصی</a><a class="chip" href="/s/tehran/services">خدمات</a><a class="chip" href="/s/tehran/jobs">استخدام</a><a class="chip" href="/s/tehran/tv-projector">تلویزیون</a></div>
+        </div>
+        <div class="d-lg-none action-bar-container">
+            <div class="action-bar">
+                <button class="chip  action-bar__action"><i aria-hidden="true" class="list ul icon action-bar__icon"></i><span>دسته‌بندی</span></button>
+                <button class="chip  action-bar__action"><i aria-hidden="true" class="filter icon action-bar__icon"></i>فیلترها</button><a class="chip" href="/s/tehran/car">خودرو سواری</a><a class="chip" href="/s/tehran/buy-residential">فروش مسکونی</a><a class="chip" href="/s/tehran/rent-residential">اجاره مسکونی</a><a class="chip" href="/s/tehran/mobile-phones">موبایل</a><a class="chip" href="/s/tehran/sofa-armchair">مبلمان</a><a class="chip" href="/s/tehran/pets-animals">حیوانات</a><a class="chip" href="/s/tehran/personal-goods">وسایل شخصی</a><a class="chip" href="/s/tehran/services">خدمات</a><a class="chip" href="/s/tehran/jobs">استخدام</a><a class="chip" href="/s/tehran/tv-projector">تلویزیون</a></div>
+        </div>
+    </header> -->
+    <div class="col-md-2 p-none browse">
+    <div class="sticky-outer-wrapper" style="">
+        <div class="sticky-inner-wrapper" style="position: relative; transform: translate3d(0px, 0px, 0px);">
+            <aside class="d-xs-none d-lg-block browse__sidebar">
+                <div class="p-lr-gutter p-b-gutter filter-box">
+                    <div class="accordion ui browse-accordion">
+                        <div class="active title subtitle-16 p-tb-gutter browse-accordion__title browse-accordion__title--always-open">دسته‌بندی‌ها</div>
+                        <a target="_blank" class="c-topCompanies__goToCompany c-btn c-btn--primary c-btn--semiFlat c-btn--sm" style="background-color: #666;margin-right: 0px !important; width: 150px; padding:0px;" ng-show="search.tag || search.city || search.rate || search.fast || search.elite" ng-click="remove_filter();">حذف فیلتر</a>
+                        <div class="content active browse-accordion__content">
+                            <div class="browse-accordion__body">
+                                <ul class="filter-category-list">
+                                    <li class="filter-category-list__item">
+                                        <a class="filter-category-list__item-field filter-category-list__item-link" ng-click="setTag('ترجمه تخصصی')">ترجمه تخصصی</a>
+                                    </li>
+                                    <li class="filter-category-list__item">
+                                        <a class="filter-category-list__item-field filter-category-list__item-link" ng-click="setTag('ترجمه مقاله')">ترجمه مقاله</a>
+                                    </li>
+                                    <li class="filter-category-list__item">
+                                        <a class="filter-category-list__item-field filter-category-list__item-link" ng-click="setTag('ترجمه فیلم')">ترجمه فیلم</a>
+                                    </li>
+                                    <li class="filter-category-list__item">
+                                        <a class="filter-category-list__item-field filter-category-list__item-link" ng-click="setTag('ترجمه فایل صوتی')">ترجمه فایل صوتی</a>
+                                    </li>
+                                    <li class="filter-category-list__item">
+                                        <a class="filter-category-list__item-field filter-category-list__item-link" ng-click="setTag('ترجمه وبسایت')">ترجمه وبسایت</a>
+                                    </li>
+                                    <li class="filter-category-list__item">
+                                        <a class="filter-category-list__item-field filter-category-list__item-link" ng-click="setTag('ترجمه دانشگاهی')">ترجمه دانشگاهی</a>
+                                    </li>
+                                    <li class="filter-category-list__item">
+                                        <a class="filter-category-list__item-field filter-category-list__item-link" ng-click="setTag('ترجمه کتاب')">ترجمه کتاب</a>
+                                    </li>
+                                    <li class="filter-category-list__item">
+                                        <a class="filter-category-list__item-field filter-category-list__item-link" ng-click="setTag('ترجمه محتوا')">ترجمه محتوا</a>
+                                    </li>
+                                    <li class="filter-category-list__item">
+                                        <a class="filter-category-list__item-field filter-category-list__item-link" ng-click="setTag('ترجمه فوری')">ترجمه فوری</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="title subtitle-16 p-tb-gutter browse-accordion__title ">شهر<i aria-hidden="true" class="angle down icon"></i></div>
+                        <div class="content browse-accordion__content">
+                            <md-content md-theme="docs-dark" layout-gt-sm="row" layout-padding="">
+                                <md-input-container class="md-block" flex-gt-sm="">
+                                        <label>شهر سکونت</label>
+                                        <md-select ng-model="search.city">
+                                         <!--  <md-option value="همه">
+                                            همه
+                                          </md-option> -->
+                                          <md-option value="تهران">
+                                            تهران
+                                          </md-option>
+                                          <md-option value="مشهد">
+                                            مشهد
+                                          </md-option>
+                                          <md-option value="کرج">
+                                            کرج
+                                          </md-option>
+                                          <md-option value="شیراز">
+                                            شیراز
+                                          </md-option>
+                                          <md-option value="اسفهان">
+                                            اسفهان
+                                          </md-option>
+                                          <md-option value="اهواز">
+                                            اهواز
+                                          </md-option>
+                                          <md-option value="تبریز">
+                                            تبریز
+                                          </md-option>
+                                          <md-option value="کرمانشاه">
+                                            کرمانشاه
+                                          </md-option>
+                                          <md-option value="رشت">
+                                            رشت
+                                          </md-option>
+                                        </md-select>
+                                      </md-input-container>   
+                              </md-content>
+                        </div>
+                        <div class="title subtitle-16 p-tb-gutter browse-accordion__title ">قیمت<i aria-hidden="true" class="angle down icon"></i></div>
+                        <div class="content browse-accordion__content">
+                              <md-content md-theme="docs-dark" layout-gt-sm="row" layout-padding="">
+                                <md-input-container class="md-block" flex-gt-sm="">
+                                        <label>قیمت ساعتی</label>
+                                        <md-select ng-model="search.rate">
+                                          <!-- <md-option value="0">
+                                            همه
+                                          </md-option> -->
+                                          <md-option value="10">
+                                            ۱۰ هزار تومان
+                                          </md-option>
+                                          <md-option value="20">
+                                            ۲۰ هزار تومان
+                                          </md-option>
+                                          <md-option value="30">
+                                            ۳۰ هزار تومان
+                                          </md-option>
+                                          <md-option value="40">
+                                            ۴۰ هزار تومان
+                                          </md-option>
+                                          <md-option value="50">
+                                            ۵۰ هزار تومان
+                                          </md-option>
+                                          <md-option value="60">
+                                            ۶۰ هزار تومان
+                                          </md-option>
+                                          <md-option value="70">
+                                            ۷۰ هزار تومان
+                                          </md-option>
+                                          <md-option value="80">
+                                            ۸۰ هزار تومان
+                                          </md-option>
+                                          <md-option value="90">
+                                            ۹۰ هزار تومان
+                                          </md-option>
+                                          <md-option value="100">
+                                            ۱۰۰ هزار تومان
+                                          </md-option>
+                                        </md-select>
+                                      </md-input-container>   
+                              </md-content>
+                        </div>
+                        <div class="title subtitle-16 p-tb-gutter browse-accordion__title ">
+                            <div class="browse-accordion__inline-field">
+                                <md-content md-theme="docs-dark" layout-gt-sm="row">
+                                    <md-checkbox ng-model="search.elite
+                                     " aria-label="Checkbox 1">
+                                          مترجم طلایی
+                                    </md-checkbox>
+                                </md-content>
+                            </div>
+                        </div>
+                        <div class="title subtitle-16 p-tb-gutter browse-accordion__title ">
+                            <div class="browse-accordion__inline-field">
+                                <md-content md-theme="docs-dark" layout-gt-sm="row">
+                                    <md-checkbox ng-model="search.fast" aria-label="Checkbox 1">
+                                            ترجمه فوری 
+                                    </md-checkbox>
+                                </md-content>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </div>
+
+</div>
+    <div class="">
+        <div class="col-md-10 p-0 m-0">
+            <div class="c-topCompanies o-box">
+                <ul class="c-topCompanies__list">
+
+                    <li class="c-topCompanies__each o-listView__itemWrap js-opened" ng-repeat="user in users | filter:{ freelancer: 'true' } track by $index">
+                        <a href="#" class="c-topCompanies__wrapper u-clearFix">
+                            <span class="c-topCompanies__counter">
+{{$index + 1}}
+</span>
+                            <div class="resume_top-left">
+                                <div class="resume_top-photo_wrapper">
+                                    <img ng-src="{{user.image || 'images/ads.png'}}" class="resume_top-photo">
+                                </div>
+                            </div>
+                            <h2 class="c-topCompanies__name">
 {{user.fullname}}
 </h2>
-                <div class="c-topCompanies__leftBlock">
-                    <span class="c-topCompanies__rate">
+                            <div class="c-topCompanies__leftBlock">
+                                <span class="c-topCompanies__rate">
 {{user.rank || '۰.۰'}}
 </span>
-                </div>
-            </a>
-            <div class="c-topCompanies__more u-clearFix">
-                <div class="c-topCompanies__texts col-md-6 col-sm-6 col-xs-12">
-                    <a target="_blank" style="background-color: #2196F3" class="c-topCompanies__goToCompany c-btn c-btn--primary c-btn--semiFlat c-btn--sm" ng-href="/profile/{{user._id}}">
+                            </div>
+                        </a>
+                        <div class="c-topCompanies__more u-clearFix">
+                            <div class="c-topCompanies__texts col-md-6 col-sm-6 col-xs-12">
+                                <a target="_blank" style="background-color: #2196F3" class="c-topCompanies__goToCompany c-btn c-btn--primary c-btn--semiFlat c-btn--sm" ng-href="/profile/{{user._id}}">
 مشاهده پروفایل مترجم   
 </a>
-<a target="_blank" class="c-topCompanies__goToCompany c-btn c-btn--primary c-btn--semiFlat c-btn--sm" style="background-color: #666" ng-click="openModal('telephone_policy');">
+                                <a target="_blank" class="c-topCompanies__goToCompany c-btn c-btn--primary c-btn--semiFlat c-btn--sm" style="background-color: #666" ng-click="openModal('telephone_policy');">
 مشاهده اطلاعات تماس 
 </a>
-                    <div class="c-topCompanies__metas">
-                        <span class="c-topCompanies__metasItem">
+                                <div class="c-topCompanies__metas">
+                                    <span class="c-topCompanies__metasItem">
 مترجم <span class="bold">{{user.level || 'آماتور'}}</span>
-</span>
-                        <span class="c-topCompanies__metasItem">
+                                    </span>
+                                    <span class="c-topCompanies__metasItem">
 ساعتی <span class="bold">{{user.rate || '۰'}} هزار تومان</span>
-</span>
-                        <span class="c-topCompanies__metasItem">
+                                    </span>
+                                    <span class="c-topCompanies__metasItem">
 <a target="_blank">
 ۲۰ کار موفق
 </a>
 </span>
-                    </div>
-                    <div class="c-topCompanies__parameters">
-                        <span class="c-topCompanies__parameter c-topCompanies__parameter--one">
+                                </div>
+                                <div class="c-topCompanies__parameters">
+                                    <span class="c-topCompanies__parameter c-topCompanies__parameter--one">
 <i class="c-topCompanies__parameterValue">
 ۱۰
 </i>
 محبوبیت میان کارجویان
 </span>
-                        <span class="c-topCompanies__parameter c-topCompanies__parameter--one
+                                    <span class="c-topCompanies__parameter c-topCompanies__parameter--one
                                             ">
 <i class="c-topCompanies__parameterValue">
 ۱۰
 </i>
 تعدد و تنوع فرصت‌های شغلی
 </span>
-                        <span class="c-topCompanies__parameter c-topCompanies__parameter--one">
+                                    <span class="c-topCompanies__parameter c-topCompanies__parameter--one">
 <i class="c-topCompanies__parameterValue">
 ۱۰
 </i>
 بررسی رزومه‌های دریافتی
 </span>
-                    </div>
-                </div>
-                <div class="c-topCompanies__workSpaceWrapper col-md-6 col-sm-6 col-xs-12">
-                                            <p>
-                           {{user.summary}}
-                        </p>
-                        <a class="blueLink m-0" ng-repeat="tag in user.tags | limitTo:12" ng-href="/browse/tag/{{tag}}">
+                                </div>
+                            </div>
+                            <div class="c-topCompanies__workSpaceWrapper col-md-6 col-sm-6 col-xs-12">
+                                <p>
+                                    {{user.summary}}
+                                </p>
+                                <a class="blueLink m-0" ng-repeat="tag in user.tags | limitTo:12" ng-href="/browse/tag/{{tag}}">
                                     {{tag}}
                             </a>
-                    <!-- <div class="c-topCompanies__workSpace">
+                                <!-- <div class="c-topCompanies__workSpace">
 
                     </div> -->
-                    
-                </div>
+
+                            </div>
+                        </div>
+                    </li>
+                </ul>
             </div>
-        </li>
-    </ul>
-</div>           
-       </div>
+        </div>
     </div>
 </div>
 
