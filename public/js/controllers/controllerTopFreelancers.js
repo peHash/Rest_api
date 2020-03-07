@@ -1,7 +1,7 @@
 + function() {
     angular.module('MyApp')
     .controller('topCtrl', function($scope, Users, $location, $window, $http) {
-
+		$scope.filteron = false;
 		$scope.search = {
 			city : '',
 			rate : '',
@@ -9,6 +9,10 @@
 			fast: ''
 		};
 		ref();
+
+		$scope.setFilter = function() {
+			$scope.filteron = !$scope.filteron;
+		}
 		
 		$scope.remove_filter = function() {
 			$scope.search = {

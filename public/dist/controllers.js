@@ -388,7 +388,7 @@
 + function() {
     angular.module('MyApp')
     .controller('topCtrl', function($scope, Users, $location, $window, $http) {
-
+		$scope.filteron = false;
 		$scope.search = {
 			city : '',
 			rate : '',
@@ -396,6 +396,10 @@
 			fast: ''
 		};
 		ref();
+
+		$scope.setFilter = function() {
+			$scope.filteron = !$scope.filteron;
+		}
 		
 		$scope.remove_filter = function() {
 			$scope.search = {
@@ -1266,6 +1270,9 @@ $scope.dismiss = function(){
     $scope.category = 'special';
     $scope.styleobj = {};
     $scope.leftNavBtn = urlExtractor($location.path());
+    $scope.refresh = function() {
+      $window.location.href = '/';
+    }
     $scope.gotohiw = function() {
       // set the location.hash to the id of
       // the element you wish to scroll to.

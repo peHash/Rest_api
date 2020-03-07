@@ -195,11 +195,10 @@ box-shadow: 0 0 0 1px
     line-height: 30px;
     height: 30px;
     padding: 0 100px;
-    margin-right: 220px;
     margin-bottom: 20px;
 }
 .c-topCompanies__goToCompany {
-    margin-right: 180px;
+    
 }
 .c-btn--semiFlat, .c-btn--semiFlat:active {
     -webkit-box-shadow: none;
@@ -248,6 +247,7 @@ color:
 }
 .c-topCompanies__metas {
     margin-top: 50px;
+
 }
 .c-topCompanies__metas, .c-topCompanies__parameters {
     font-size: 13px;
@@ -319,16 +319,18 @@ background-color:
     font-size: 12px;
     color: 
 #444;
-border-left: 1px solid
-    #e0e0e0;
 }
 .c-topCompanies__metasItem {
     padding: 0 7px;
     font-size: 12px;
     color: 
 #444;
-border-left: 1px solid
-    #e0e0e0;
+    border-bottom: 1px dashed
+#e0e0e0;
+
+display: inline-block;
+
+width: 100%;
 }
 .c-topCompanies__metasItem:last-child {
     border-left: none;
@@ -358,7 +360,7 @@ color:
     padding-top: 20px;
 }
 .bold {
-    font-size: 16px;
+    /*font-size: 16px;*/
 
 }
 .resume_top-photo_wrapper {
@@ -513,7 +515,8 @@ color:
         <div class="sticky-inner-wrapper" style="position: relative; transform: translate3d(0px, 0px, 0px);">
             <aside class="d-xs-none d-lg-block browse__sidebar">
                 <div class="p-lr-gutter p-b-gutter filter-box">
-                    <div class="accordion ui browse-accordion">
+                    <a target="_blank" class="c-topCompanies__goToCompany c-btn c-btn--primary c-btn--semiFlat c-btn--sm" style="background-color: #666;margin-right: 0px !important; width: 150px; padding:0px;" ng-click="setFilter();">فیلتر جست و جو</a>
+                    <div class="accordion ui browse-accordion" ng-show="filteron">
                         <div class="active title subtitle-16 p-tb-gutter browse-accordion__title browse-accordion__title--always-open">دسته‌بندی‌ها</div>
                         <a target="_blank" class="c-topCompanies__goToCompany c-btn c-btn--primary c-btn--semiFlat c-btn--sm" style="background-color: #666;margin-right: 0px !important; width: 150px; padding:0px;" ng-show="search.tag || search.city || search.rate || search.fast || search.elite" ng-click="remove_filter();">حذف فیلتر</a>
                         <div class="content active browse-accordion__content">
@@ -677,20 +680,20 @@ color:
 {{user.fullname}}
 </h2>
                             <div class="c-topCompanies__leftBlock">
-                                <span class="c-topCompanies__rate">
-{{user.rank || '۰.۰'}}
+                                <!-- <span class="c-topCompanies__rate">
+{{user.rank || '۰.۰'}} -->
 </span>
                             </div>
                         </a>
                         <div class="c-topCompanies__more u-clearFix">
                             <div class="c-topCompanies__texts col-md-6 col-sm-6 col-xs-12">
-                                <a target="_blank" style="background-color: #2196F3" class="c-topCompanies__goToCompany c-btn c-btn--primary c-btn--semiFlat c-btn--sm" ng-href="/profile/{{user._id}}">
+                                <div class="c-topCompanies__metas" style="border-bottom:none;">
+                                    <a target="_blank" style="background-color: #2196F3; margin-top:60px;" class="c-topCompanies__goToCompany c-btn c-btn--primary c-btn--semiFlat c-btn--sm" ng-href="/profile/{{user._id}}">
 مشاهده پروفایل مترجم   
 </a>
-                                <a target="_blank" class="c-topCompanies__goToCompany c-btn c-btn--primary c-btn--semiFlat c-btn--sm" style="background-color: #666" ng-click="openModal('telephone_policy');">
-مشاهده اطلاعات تماس 
-</a>
-                                <div class="c-topCompanies__metas">
+                                    <a target="_blank" class="c-topCompanies__goToCompany c-btn c-btn--primary c-btn--semiFlat c-btn--sm" style="background-color: #666" ng-click="openModal('telephone_policy');">
+    مشاهده اطلاعات تماس 
+    </a>
                                     <span class="c-topCompanies__metasItem">
 مترجم <span class="bold">{{user.level || 'آماتور'}}</span>
                                     </span>
@@ -729,7 +732,7 @@ color:
                                 <p>
                                     {{user.summary}}
                                 </p>
-                                <a class="blueLink m-0" ng-repeat="tag in user.tags | limitTo:12" ng-href="/browse/tag/{{tag}}">
+                                <a class="blueLink m-0" ng-repeat="tag in user.tags | limitTo:12">
                                     {{tag}}
                             </a>
                                 <!-- <div class="c-topCompanies__workSpace">

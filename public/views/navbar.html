@@ -264,7 +264,7 @@ transition: all .3s ease;
         </a>
       </div>
     </div>
-    <div class="col-md-9 col-sm-12 col-xs-12 header login">
+    <div class="col-md-4 col-sm-6 col-xs-8 header login">
       <ul class="nav navbar-nav pull-right login-ul " ng-if="!currentUser">
         <!-- <div class="giga-logo-container">
           <a  href="/"><img id="giga-logo-portion" src="./images/giga-logo.png"/></a>
@@ -272,7 +272,7 @@ transition: all .3s ease;
         <li data-match-route="/login">
           <a href="/login">
             <span class="ion-android-exit"></span>
-            ورود
+            ورود و ثبت نام
           </a>
         </li>
         <!-- <li data-match-route="/signup" style="display:none !important;">
@@ -283,7 +283,7 @@ transition: all .3s ease;
          </a>
         </li> -->
       </ul>
-      <ul ng-cloak class="nav navbar-nav pull-right userContainer col-md-4 col-sm-5 col-xs-12" ng-if="currentUser">
+      <ul ng-cloak class="nav navbar-nav pull-right userContainer col-md-12 col-sm-12 col-xs-12" ng-if="currentUser">
         <li class="dropdown navbar-profile" ng-click="usertoggle();">
           <img class="navAvatar" ng-src="images/upload_ba306abb08424caa55618b897c7710ef.png" alt="کاربر محترم"></img>
         </li>
@@ -323,7 +323,7 @@ transition: all .3s ease;
         </div>
         <li>
           <div class="giga-logo-container">
-            <a  href="/"><img id="giga-logo-portion" src="./images/giga-logo.png"/></a>
+            <a  href="/" ng-click="refresh()"><img id="giga-logo-portion" src="./images/giga-logo.png"/></a>
           </div>  
         </li>
         
@@ -338,10 +338,7 @@ transition: all .3s ease;
           </a>
         </li> -->
       </ul>
-      <ul class="nav navbar-nav pull-right col-md-8" ng-show="!mobile">
-        <ul class="_main_menu">
-    <li class="has_submenu">
-        <a href="/top30/" >۳۰ مترجم تاپ</a>
+    </div>
         <!-- <div class="_main_submenu_holder" style="opacity: 1;display: block;" ng-show="dropdown2" ng-style="getStyle()">
             <div class="container">
                 <ul class="_main_submenu _levelOne">
@@ -1212,14 +1209,18 @@ transition: all .3s ease;
                 </ul>
             </div>
         </div> -->
-    </li>
-    <li class="has_submenu">
-        <a href="/" ng-click="gotohiw();">گیگاکار چگونه کار می کند</a>
-    </li>
-    <li class="has_submenu">
-        <a href="/" ng-click="gotohiw();">پرداخت امن</a>
-    </li>
-</ul>
+      <ul class="nav navbar-nav pull-right col-md-4" ng-show="!mobile">
+        <ul class="_main_menu">
+          <li class="has_submenu">
+            <a href="/top30/" >۳۰ مترجم تاپ</a>
+          </li>
+          <li class="has_submenu">
+            <a href="/" ng-click="gotohiw();">گیگاکار چگونه کار می کند</a>
+          </li>
+          <li class="has_submenu">
+              <a href="/" ng-click="gotohiw();">پرداخت امن</a>
+          </li>
+        </ul>
       </ul>
       <!-- <ul class="col-md-8 col-sm-7 hidden-xs nav navbar-nav primary-pages pull-right">
           <li style="" data-match-route="/add"><a href="/add">
@@ -1237,5 +1238,11 @@ transition: all .3s ease;
               </span>
           </a></li>
       </ul> -->
-    </div>
+    <ul class="nav navbar-nav pull-right col-md-4 col-sm-4 col-xs-4" ng-show="mobile">
+        <ul class="_main_menu">
+    <li class="has_submenu">
+        <a href="/top30/" >۳۰ مترجم تاپ</a>
+      </li>
+    </ul>
+  </ul>
   </div>

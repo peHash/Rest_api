@@ -6,6 +6,9 @@
     $scope.category = 'special';
     $scope.styleobj = {};
     $scope.leftNavBtn = urlExtractor($location.path());
+    $scope.refresh = function() {
+      $window.location.href = '/';
+    }
     $scope.gotohiw = function() {
       // set the location.hash to the id of
       // the element you wish to scroll to.
