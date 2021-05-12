@@ -47,7 +47,7 @@
     "mongoose-deep-populate": "^2.0.1",
     "morgan": "^1.0.0",
     "node-telegram-bot-api": "^0.40.0",
-    "nodemailer": "^0.6.3",
+    "nodemailer": "^6.4.16",
     "path": "^0.12.7",
     "request": "^2.34.0",
     "sugar": "^1.4.1",
