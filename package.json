@@ -41,7 +41,7 @@
     "kavenegar": "^1.1.4",
     "lodash": "^2.4.1",
     "method-override": "^1.0.0",
-    "moment": "^2.7.0",
+    "moment": "^2.29.2",
     "mongodb": "^2.2.36",
     "mongoose": "^4.13.20",
     "mongoose-deep-populate": "^2.0.1",
